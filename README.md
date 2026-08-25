@@ -1,35 +1,50 @@
-# 🚀 AI-SDLC Starter Kit & Framework
+# 🚀 AI-SDLC Starter Kit & Agentic-Native Framework
 
-Repositorio central con la guía metodológica y las plantillas oficiales del **AI-Augmented Software Development Life Cycle**.
+Repositorio central con la guía metodológica y las plantillas oficiales del **AI-Augmented Software Development Life Cycle (AI-SDLC)** y arquitectura **Agentic-Native** (inspirada en *Stripe Minions*).
 
-## 📂 Contenido del Directorio
+---
 
-- [`AI-SDLC-GUIDELINES.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/AI-SDLC-GUIDELINES.md) — Documento maestro con los principios, fases de desarrollo, estándares de versionado y automatizaciones recomendadas.
-- **`templates/`** — Catálogo modular listo para copiar a nuevos repositorios:
-  - [`templates/AGENTS.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/AGENTS.md) — Reglas y directrices para agentes IA.
-  - [`templates/HANDOFF.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/HANDOFF.md) — Snapshot vivo de estado y continuidad.
-  - [`templates/CHANGELOG.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/CHANGELOG.md) — Keep a Changelog + SemVer.
-  - [`templates/CONTRIBUTING.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/CONTRIBUTING.md) — Convenciones Git y Quality Gates.
-  - [`templates/docs/INDEX.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/INDEX.md) — Matriz de trazabilidad y navegación documental.
-  - [`templates/docs/architecture/c4-model-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/architecture/c4-model-template.md) — Arquitectura C4 (Contexto, Contenedores, Componentes).
-  - [`templates/docs/use-cases/UC-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/use-cases/UC-001-template.md) — Especificación formal de Caso de Uso (BDD Gherkin).
-  - [`templates/docs/diagrams/sequences/SEQ-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/diagrams/sequences/SEQ-001-template.md) — Diagrama de Secuencia Mermaid.
-  - [`templates/docs/diagrams/activities/ACT-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/diagrams/activities/ACT-001-template.md) — Diagrama de Actividad / Flujo lógico Mermaid.
-  - [`templates/docs/diagrams/state-machines/STM-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/diagrams/state-machines/STM-001-template.md) — Diagrama de Máquinas de Estados Mermaid.
-  - [`templates/docs/diagrams/entity-relationship/ERD-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación BD Mermaid.
-  - [`templates/docs/adr/ADR-0001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/adr/ADR-0001-template.md) — Registro de Decisiones de Arquitectura.
-  - [`templates/docs/specs/RFC-001-template.md`](file:///Users/jlorenzor/Documents/ai-sdlc-framework/templates/docs/specs/RFC-001-template.md) — Especificación técnica RFC.
+## 📂 Catálogo Modular de Plantillas (`templates/`)
+
+### 🤖 Módulos de Inteligencia Agéntica & Sandbox
+- [`templates/AGENTS.md`](templates/AGENTS.md) — Entrypoint y directrices maestras para agentes IA.
+- [`templates/.agents/rules/invariants.md`](templates/.agents/rules/invariants.md) — Límites arquitectónicos y de seguridad inviolables.
+- [`templates/.agents/rules/style-guide.md`](templates/.agents/rules/style-guide.md) — Estándares de tipado, código y tests.
+- [`templates/.agents/tasks/TASK_TEMPLATE.md`](templates/.agents/tasks/TASK_TEMPLATE.md) — Contrato de tarea con comando de evaluación.
+- [`templates/.agents/mcp/mcp-servers.json`](templates/.agents/mcp/mcp-servers.json) — Catálogo de herramientas MCP locales para el agente.
+- [`templates/.agents/workflows/autonomous-pr.md`](templates/.agents/workflows/autonomous-pr.md) — Protocolo de empaquetado de PRs autónomos.
+- [`templates/.devcontainer/devcontainer.json`](templates/.devcontainer/devcontainer.json) — Sandbox hermético para ejecución aislada.
+- [`templates/evals/harness.mjs`](templates/evals/harness.mjs) — Script ejecutor del Eval Harness (Self-Healing Loop).
+- [`templates/evals/tasks/eval-task-001.json`](templates/evals/tasks/eval-task-001.json) — Ejemplo de benchmark de evaluación.
+
+### 🏛️ Arquitectura & Documentación Técnica
+- [`templates/docs/INDEX.md`](templates/docs/INDEX.md) — Matriz de trazabilidad y navegación documental.
+- [`templates/docs/architecture/c4-model-template.md`](templates/docs/architecture/c4-model-template.md) — Arquitectura C4 (Contexto, Contenedores, Componentes).
+- [`templates/docs/use-cases/UC-001-template.md`](templates/docs/use-cases/UC-001-template.md) — Caso de Uso formal con BDD / Gherkin.
+- [`templates/docs/diagrams/sequences/SEQ-001-template.md`](templates/docs/diagrams/sequences/SEQ-001-template.md) — Diagrama de Secuencia Mermaid.
+- [`templates/docs/diagrams/activities/ACT-001-template.md`](templates/docs/diagrams/activities/ACT-001-template.md) — Diagrama de Actividad / Flujo lógico Mermaid.
+- [`templates/docs/diagrams/state-machines/STM-001-template.md`](templates/docs/diagrams/state-machines/STM-001-template.md) — Máquina de Estados de Entidades Mermaid.
+- [`templates/docs/diagrams/entity-relationship/ERD-001-template.md`](templates/docs/diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación BD Mermaid.
+- [`templates/docs/adr/ADR-0001-template.md`](templates/docs/adr/ADR-0001-template.md) — Registro de Decisiones de Arquitectura (ADR).
+- [`templates/docs/specs/RFC-001-template.md`](templates/docs/specs/RFC-001-template.md) — Especificación técnica RFC.
+
+### 📦 Gobernanza, Release & Continuidad
+- [`templates/HANDOFF.md`](templates/HANDOFF.md) — Snapshot vivo de estado y continuidad entre sesiones.
+- [`templates/CHANGELOG.md`](templates/CHANGELOG.md) — Keep a Changelog + SemVer.
+- [`templates/CONTRIBUTING.md`](templates/CONTRIBUTING.md) — Convenciones Git, Commits y Quality Gates.
 
 ---
 
 ## ⚡ Cómo inicializar un nuevo proyecto con estas plantillas
 
-Para aplicar este framework en cualquier proyecto nuevo, ejecuta desde la raíz de tu nuevo repositorio:
+Para aplicar este framework en cualquier repositorio nuevo, ejecuta desde la raíz:
 
 ```bash
-# Crear estructura de carpetas
-mkdir -p docs/{architecture,use-cases,diagrams/{sequences,activities,state-machines,entity-relationship},adr,specs,qa} .agents/rules
+# 1. Crear el árbol completo de directorios
+mkdir -p .agents/{rules,tasks,mcp,workflows} .devcontainer evals/tasks docs/{architecture,use-cases,diagrams/{sequences,activities,state-machines,entity-relationship},adr,specs,qa}
 
-# Copiar plantillas base
+# 2. Copiar todo el catálogo de plantillas
 cp -R /Users/jlorenzor/Documents/ai-sdlc-framework/templates/* ./
+cp -R /Users/jlorenzor/Documents/ai-sdlc-framework/templates/.agents ./
+cp -R /Users/jlorenzor/Documents/ai-sdlc-framework/templates/.devcontainer ./
 ```

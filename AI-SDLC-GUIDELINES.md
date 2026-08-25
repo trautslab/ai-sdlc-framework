@@ -1,38 +1,49 @@
 # 📘 AI-SDLC: Framework de Gobernanza, Arquitectura y Continuidad para Proyectos Agénticos
 
-Este documento define el estándar oficial de ciclo de vida de desarrollo de software asistido por Inteligencia Artificial (**AI-Augmented Software Development Life Cycle**). Su propósito es garantizar rigor técnico, diseño previo a la codificación, cero alucinaciones y persistencia total de contexto entre sesiones de trabajo.
+Este documento define el estándar oficial de ciclo de vida de desarrollo de software asistido por Inteligencia Artificial (**AI-Augmented Software Development Life Cycle**) y arquitectura **Agentic-Native** (inspirada en los sistemas autónomos tipo *Stripe Minions* y *SWE-bench*).
+
+Su propósito es garantizar rigor técnico, diseño previo a la codificación, cero alucinaciones, sandboxing hermético y persistencia total de contexto entre sesiones.
 
 ---
 
 ## 1. Principios Fundamentales
 
 1. **Spec-Driven Development (SDD) & Design-First:**
-   - Ningún código se escribe sin una especificación validada en `docs/specs/`.
+   - Ningún código se escribe sin una especificación validada en `docs/specs/` o contrato en `.agents/tasks/`.
    - Cada flujo de datos debe estar diagramado con **Mermaid** y validado con criterios de aceptación en formato **BDD / Gherkin**.
 
 2. **Context Anchoring (Anti-Amnesia):**
-   - El repositorio mantiene un archivo vivo de estado (`HANDOFF.md`) y directrices de agente (`AGENTS.md`).
+   - El repositorio mantiene un archivo vivo de estado (`HANDOFF.md`) y directrices maestras (`AGENTS.md`).
    - Cualquier sesión futura (humana o con IA) retoma el trabajo exactamente donde se dejó en menos de 30 segundos.
 
-3. **Quality Gates Deterministas:**
-   - La IA nunca decide si el código está listo; lo deciden los linters, el tipado estricto, los tests unitarios/integración y los hooks de pre-commit.
+3. **Hermetic Sandboxing & Self-Healing Loop:**
+   - La ejecución y pruebas corren en contenedores reproducibles (`.devcontainer/`).
+   - El harness de evaluación (`evals/harness.mjs`) proporciona retroalimentación determinista en bucle cerrado hasta lograr 100% de aserciones exitosas.
 
-4. **Trazabilidad Semántica Rigurosa:**
+4. **Invariantes Arquitectónicos Inviolables:**
+   - Reglas duras de ingeniería (`.agents/rules/invariants.md`) que prohíben accesos no autorizados a bases de datos, secretos hardcodeados o código sin tests.
+
+5. **Trazabilidad Semántica Rigurosa:**
    - Mapeo 1:1 entre **Conventional Commits**, la sección `[Unreleased]` de `CHANGELOG.md` y las versiones bajo **SemVer** (`MAJOR.MINOR.PATCH`).
 
 ---
 
-## 2. Arquitectura de Carpetas del Repositorio Estándar
+## 2. Arquitectura del Repositorio Agentic-Native
 
 ```text
-├── .agents/                        # Directrices y habilidades para agentes IA
-│   ├── rules/                      # Reglas de estilo, seguridad y arquitectura
-│   └── skills/                     # Scripts de utilidad y toolings específicos
-├── .github/                        # Automatización CI/CD
+├── .agents/                        # 🤖 Módulos de Inteligencia Agéntica
+│   ├── rules/
+│   │   ├── invariants.md           # 🛡️ Límites arquitectónicos inviolables
+│   │   └── style-guide.md          # Estándares de tipado y clean code
+│   ├── tasks/
+│   │   └── TASK_TEMPLATE.md        # 📋 Contratos de tareas con Eval Command
+│   ├── mcp/
+│   │   └── mcp-servers.json        # 🔌 Herramientas locales expuestas vía MCP
 │   └── workflows/
-│       ├── ci.yml                  # Lint, Typecheck, Test, Mutation Testing
-│       └── release.yml             # Release semántico automatizado
-├── docs/                           # Fuente de verdad documental
+│       └── autonomous-pr.md        # Protocolo de empaquetado de PRs autónomos
+├── .devcontainer/                  # 🐳 Sandbox Hermético Reproducible
+│   └── devcontainer.json           # Configuración de runtime y extensiones
+├── docs/                           # 📚 Fuente de Verdad Documental
 │   ├── INDEX.md                    # Matriz maestra de trazabilidad y catálogo
 │   ├── architecture/               # Modelo C4 (Context, Container, Component)
 │   ├── use-cases/                  # Casos de uso formales (UC-001, UC-002...)
@@ -43,9 +54,12 @@ Este documento define el estándar oficial de ciclo de vida de desarrollo de sof
 │   │   └── entity-relationship/    # ERD-001... (Modelos de datos SQL/NoSQL)
 │   ├── adr/                        # Architecture Decision Records (ADR-0001...)
 │   └── specs/                      # Especificaciones funcionales y RFCs
+├── evals/                          # 🧪 Harness de Evaluación Automatizada
+│   ├── harness.mjs                 # Script ejecutor de pruebas de tareas
+│   └── tasks/                      # Fixtures y benchmarks de evaluación
 ├── src/                            # Código fuente modular
 ├── tests/                          # E2E, integración y unit tests
-├── AGENTS.md                       # Reglas maestras y directrices para agentes IA
+├── AGENTS.md                       # Entrypoint para asistentes y agentes IA
 ├── CHANGELOG.md                    # Historial según Keep a Changelog
 ├── CONTRIBUTING.md                 # Guía de contribución, SemVer y branching
 ├── HANDOFF.md                      # Snapshot vivo de estado para tu "yo futuro"
@@ -58,36 +72,39 @@ Este documento define el estándar oficial de ciclo de vida de desarrollo de sof
 
 ```mermaid
 flowchart TD
-    subgraph FASE_0["0. Context Ingestion"]
-        A["Leer AGENTS.md + HANDOFF.md + Specs"]
+    subgraph FASE_0["0. Context Ingestion & Setup"]
+        A["Leer AGENTS.md + HANDOFF.md + Invariants"]
+        B["Levantar Sandbox en .devcontainer"]
+        A --> B
     end
 
-    subgraph FASE_1["1. Pre-Implementación (Design-First)"]
-        B["Redactar RFC / Caso de Uso en docs/specs/"]
-        C["Crear Diagrama de Secuencia (Mermaid)"]
-        D["Definir Criterios de Aceptación (Gherkin BDD)"]
-        E["Registrar ADR (si aplica)"]
-        B --> C --> D --> E
+    subgraph FASE_1["1. Pre-Implementación (Design & Task Contract)"]
+        C["Redactar RFC / Caso de Uso en docs/specs/"]
+        D["Definir Diagramas Mermaid (C4, Seq, Act)"]
+        E["Crear Contrato de Tarea en .agents/tasks/"]
+        C --> D --> E
     end
 
-    subgraph FASE_2["2. Implementación & AI Pair Programming"]
+    subgraph FASE_2["2. Implementación & Self-Healing Loop"]
         F["TDD: Escribir Tests en Rojo"]
-        G["Implementar Código Mínimo"]
-        H["Refactorizar con Typecheck & Linter"]
+        G["Implementar Código de Dominio"]
+        H["Ejecutar evals/harness.mjs"]
+        H -- Falla --> G
         F --> G --> H
     end
 
     subgraph FASE_3["3. Quality Gates & Verificación"]
-        I["Pre-commit Hooks (Lefthook / Husky)"]
-        J["QA Harness / Tests de Regresión"]
+        I["Linters Estrictos & Typecheck"]
+        J["Verificar Invariantes de Seguridad"]
         I --> J
     end
 
-    subgraph FASE_4["4. Cierre, Trazabilidad & Handover"]
+    subgraph FASE_4["4. Cierre, Trazabilidad & PR Autónomo"]
         K["Actualizar CHANGELOG.md [Unreleased]"]
         L["Conventional Commit (feat/fix/etc)"]
         M["Actualizar HANDOFF.md (Estado + Siguientes Pasos)"]
-        K --> L --> M
+        N["Generar PR según autonomous-pr.md"]
+        K --> L --> M --> N
     end
 
     FASE_0 --> FASE_1 --> FASE_2 --> FASE_3 --> FASE_4
@@ -130,20 +147,11 @@ El archivo `CHANGELOG.md` debe mantener siempre activa la sección `[Unreleased]
 
 | Categoría | Herramientas Recomendadas | Propósito |
 | :--- | :--- | :--- |
+| **Sandboxing** | Dev Containers / Docker | Aislamiento total de dependencias y ejecución limpia. |
+| **Eval Harness** | `evals/harness.mjs` | Bucle cerrado de feedback y auto-corrección para el agente. |
+| **Model Context Protocol** | `@modelcontextprotocol/sdk` | Herramientas estructuradas de introspección para la IA. |
 | **Git Hooks** | `lefthook` o `husky` + `lint-staged` | Garantiza que nadie haga commit sin pasar linter y types. |
-| **Commit Linter** | `@commitlint/cli` + `@commitlint/config-conventional` | Bloquea commits que no respeten el estándar. |
+| **Commit Linter** | `@commitlint/cli` | Bloquea commits que no respeten Conventional Commits. |
 | **Release Automático** | `release-it` o `semantic-release` | Automatiza el versionado `git tag` y parsea el changelog. |
 | **Validación de Tipos & Lint** | `biome` o `eslint` + `typescript` | Feedback estricto en milisegundos para agentes IA. |
-| **Testing & Cobertura** | `vitest` / `pytest` / `go test` + `c8` | Pruebas unitarias, parametrizadas y de integración. |
-| **Diagramas como Código** | `mermaid-cli` (`mmdc`) | Verificación estática de diagramas en CI. |
-
----
-
-## 6. Checklist de Inicialización para Nuevos Proyectos
-
-1. [ ] Inicializar Git y configurar `.gitignore`.
-2. [ ] Copiar las plantillas base: `AGENTS.md`, `HANDOFF.md`, `CHANGELOG.md`, `CONTRIBUTING.md`.
-3. [ ] Crear la estructura de carpetas `docs/` (`specs/`, `adr/`, `diagrams/`, `qa/`).
-4. [ ] Configurar Linters y Git Hooks (`npx lefthook install`).
-5. [ ] Redactar la primera especificación funcional `docs/specs/RFC-001-setup.md`.
-6. [ ] Hacer el commit inicial: `chore: initial repository scaffolding with AI-SDLC framework`.
+| **Testing & Cobertura** | `vitest` / `pytest` / `go test` | Pruebas unitarias, parametrizadas y de integración. |
