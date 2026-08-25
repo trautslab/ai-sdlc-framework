@@ -33,10 +33,16 @@ Este documento define el estándar oficial de ciclo de vida de desarrollo de sof
 │       ├── ci.yml                  # Lint, Typecheck, Test, Mutation Testing
 │       └── release.yml             # Release semántico automatizado
 ├── docs/                           # Fuente de verdad documental
+│   ├── INDEX.md                    # Matriz maestra de trazabilidad y catálogo
+│   ├── architecture/               # Modelo C4 (Context, Container, Component)
+│   ├── use-cases/                  # Casos de uso formales (UC-001, UC-002...)
+│   ├── diagrams/                   # Catálogo de diagramas Mermaid
+│   │   ├── sequences/              # SEQ-001... (Interacciones temporales)
+│   │   ├── activities/             # ACT-001... (Flujos lógicos y decisiones)
+│   │   ├── state-machines/         # STM-001... (Ciclos de vida de entidades)
+│   │   └── entity-relationship/    # ERD-001... (Modelos de datos SQL/NoSQL)
 │   ├── adr/                        # Architecture Decision Records (ADR-0001...)
-│   ├── diagrams/                   # Diagramas C4 y Secuencias en Mermaid
-│   ├── specs/                      # Especificaciones funcionales, RFCs y Casos de Uso
-│   └── qa/                         # Benchmarks, matrices de prueba y QA Harness
+│   └── specs/                      # Especificaciones funcionales y RFCs
 ├── src/                            # Código fuente modular
 ├── tests/                          # E2E, integración y unit tests
 ├── AGENTS.md                       # Reglas maestras y directrices para agentes IA
