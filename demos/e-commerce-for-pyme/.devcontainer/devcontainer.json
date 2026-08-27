@@ -1,0 +1,11 @@
+{
+  "name": "ShopFast E-commerce Sandbox",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [3000, 5432, 6379],
+  "postCreateCommand": "npm install && npm run build --if-present",
+  "remoteUser": "node"
+}
