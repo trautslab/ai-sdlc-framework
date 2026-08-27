@@ -10,9 +10,9 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 
 ---
 
-## 🔬 1.1. Análisis Profundo & Arquitectura Enterprise
-- [`01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md`](deep-dives/01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md) — Matriz de RNFs, Resiliencia, Bulkheading y Aislamiento para CRM de IA con 100+ Integraciones.
-- [`02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md`](deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md) — Gobernanza Inmune a la Saturación/Compactación de Contexto, Tokenomics de Alta Escala y Garantías en Antigravity / Claude Code / Codex / Cursor.
+## 🔬 1.1. Análisis Profundo & Arquitectura Enterprise (Framework Central)
+- [01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md](https://github.com/trautslab/ai-sdlc-framework/blob/main/docs/deep-dives/01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md) — Matriz de RNFs, Resiliencia, Bulkheading y Aislamiento para CRM de IA con 100+ Integraciones.
+- [02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md](https://github.com/trautslab/ai-sdlc-framework/blob/main/docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md) — Gobernanza Inmune a la Saturación/Compactación de Contexto, Tokenomics de Alta Escala y Garantías en Antigravity / Claude Code / Codex / Cursor.
 
 ---
 
