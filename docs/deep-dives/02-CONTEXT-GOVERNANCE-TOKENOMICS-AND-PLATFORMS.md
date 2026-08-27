@@ -1,14 +1,15 @@
 # 🧠 Gobernanza Inmune a la Amnesia de Contexto, Tokenomics de 100+ Herramientas y Garantías Multi-Plataforma
 
-Este documento detalla cómo garantizar que los agentes de Inteligencia Artificial respeten las reglas arquitectónicas incluso bajo **saturación o auto-compactación de la ventana de contexto**, cómo diseñar **Tokenomics de alta eficiencia para más de 100 herramientas** y cómo implementarlo en **Antigravity IDE/CLI, Claude Code, Codex y Cursor**, todo respaldado por **evidencia y literatura científica peer-reviewed** (*Stanford, MIT, Princeton, NVIDIA, ICLR, NeurIPS, ACL*).
+Este documento detalla cómo garantizar que los agentes de Inteligencia Artificial respeten las reglas arquitectónicas incluso bajo **saturación o auto-compactación de la ventana de contexto**, cómo diseñar **Tokenomics de alta eficiencia para más de 100 herramientas** y cómo implementarlo de forma visible, ejecutable y determinista en **Antigravity IDE/CLI, Claude Code, Codex y Cursor**, todo respaldado por **evidencia y literatura científica peer-reviewed** (*Stanford, MIT, Princeton, UC Berkeley, NVIDIA, Anthropic, Databricks, ICLR, NeurIPS, ACL*).
 
 ---
 
 ## 1. Blindaje Inmune a la Saturación y Auto-Compactación de Contexto
 
-El contexto de los LLMs es inherentemente volátil. La investigación científica ha demostrado que los modelos sufren de **degradación de atención y pérdida de contexto**:
-- **Efecto "Lost in the Middle"** (*Liu et al., Stanford / TACL 2024* [^1]): El rendimiento del LLM sigue una curva en "U"; retiene con precisión las instrucciones ubicadas al inicio y al final del prompt, pero **olvida e ignora sistemáticamente las reglas situadas en el centro** de ventanas largas.
-- **Límites Reales de Razonamiento en Contextos Extensos** (*RULER Benchmark, NVIDIA 2024* [^2]): Aunque un modelo anuncie ventanas de 128k o 1M de tokens, su capacidad para razonar sobre reglas multi-paso colapsa drásticamente al superar los **32k tokens** si no se aplican técnicas de aislamiento.
+El contexto de los LLMs es inherentemente volátil. La literatura científica formal ha demostrado que los modelos de lenguaje sufren de **degradación severa de atención y amnesia operativa**:
+- **Efecto "Lost in the Middle"** (*Liu et al., Stanford / TACL 2024* [^1]): El rendimiento de recuperación y razonamiento del LLM sigue una curva en "U"; retiene con precisión las instrucciones ubicadas al inicio y al final del prompt, pero **olvida e ignora sistemáticamente las reglas situadas en el centro** de ventanas largas.
+- **Límites Reales de Razonamiento en Contextos Extensos** (*RULER Benchmark, NVIDIA 2024* [^2]): Aunque los proveedores anuncien ventanas de 128k o 1M de tokens, la capacidad para razonar sobre reglas complejas y trazabilidad multi-paso colapsa drásticamente al superar los **32k tokens** si no se aplican técnicas de aislamiento.
+- **El Paradigma de Sistemas de IA Compuestos (*Compound AI Systems*, Zaharia et al., UC Berkeley / Stanford / Databricks 2024 [^10]):** El estado del arte en IA empresarial no consiste en utilizar un modelo monolítico más grande, sino en diseñar un **sistema compuesto** con orquestación modular, sandboxes herméticos y evaluadores deterministas.
 
 Para garantizar una gobernanza inquebrantable, se implementa una **Arquitectura de Doble Riel**:
 
@@ -34,13 +35,12 @@ flowchart TD
 1. **Linter de Arquitectura:** `dependency-cruiser` bloquea en tiempo de análisis cualquier importación indebida entre capas, impidiendo que el código se compile o pase CI.
 2. **Pre-commit Hooks Inmunes:** `Lefthook` ejecuta `gitleaks` (secretos), `tsc` (tipado estricto) y `commitlint` (SemVer) antes de permitir que cualquier commit se registre en Git.
 3. **Bloqueo Físico de Herramientas:** Si el agente ejecuta una acción no autorizada, el comando finaliza con código de error `1` y le retorna el mensaje explicativo para obligarlo a re-alinearse.
-4. **Bucle de Auto-Corrección Verbal (*Reflexion Paradigm*, Shinn et al., NeurIPS 2023 [^5]):** En lugar de requerir intervención humana, el agente lee el *stack trace* del fallo determinista, formula una reflexión en lenguaje natural y ajusta su implementación de forma autónoma.
+4. **Bucle de Auto-Corrección Verbal (*Reflexion Paradigm*, Shinn et al., NeurIPS 2023 [^5]):** En lugar de requerir intervención humana, el agente lee el *stack trace* del fallo determinista, formula una reflexión en lenguaje natural y ajusta su implementación de forma autónoma hasta lograr 100% de aserciones verdes.
 
 ### Mecanismos del Riel Suave (Cognitivo Rehidratable)
-1. **Invariantes Breves:** Las reglas maestras en `AGENTS.md` ocupan menos de 25 líneas para colocarse al inicio/final del prompt y mitigar el fenómeno *Lost in the Middle*.
+1. **Invariantes Breves:** Las reglas maestras en `AGENTS.md` ocupan menos de 25 líneas para colocarse al inicio/final del prompt y mitigar el fenómeno *Lost in the Middle* [^1].
 2. **State Checkpoints Inmutables (`HANDOFF.md`):** Al compactar, el modelo solo ingiere el snapshot de estado (< 300 tokens) sin reprocesar miles de líneas de historial previo.
-3. **Subagentes Efímeros (Divide & Conquer & Zero-Context Pollution):**
-   Las tareas complejas **NUNCA** deben ejecutarse en una única ventana de contexto monolítica. El agente orquestador divide el trabajo y despacha subagentes con ventanas de contexto limpias, aisladas y de un solo propósito (*MetaGPT*, Hong et al., ICLR 2024 [^3]; *ChatDev*, Qian et al., ACL 2024 [^4]).
+3. **Patrón Orquestador-Trabajadores (*Orchestrator-Workers*, Anthropic Research 2024 [^11]):** Las tareas complejas **NUNCA** deben ejecutarse en una única ventana de contexto monolítica. El agente orquestador divide el trabajo y despacha subagentes con ventanas de contexto limpias, aisladas y de un solo propósito (*MetaGPT*, Hong et al., ICLR 2024 [^3]; *ChatDev*, Qian et al., ACL 2024 [^4]; *AutoGen*, Wu et al., 2023 [^14]).
 
 ---
 
@@ -50,19 +50,19 @@ Cuando un proyecto escala a más de 100 herramientas o módulos complejos, acumu
 
 ```mermaid
 flowchart TD
-    Orchestrator["👑 AGENTE ORQUESTADOR\n(Contexto Global: HANDOFF.md + Roadmap)"]
+    Orchestrator["👑 AGENTE ORQUESTADOR\n[Compound AI System - Zaharia et al., 2024]\n(Contexto Global: HANDOFF.md + Roadmap)"]
     
     subgraph SUBAGENT_A["🤖 Subagente Efímero A (Salesforce)"]
         PayloadA["Payload Quirúrgico:\n- TASK-042-salesforce.md\n- invariants.md\n- salesforce.adapter.ts"]
         SandboxA["Sandbox Aislado\n(DevContainer / MicroVM)"]
-        EvalA["Bucle Self-Healing:\nevals/harness.mjs --task 042\n[Reflexion - Shinn et al., 2023]"]
+        EvalA["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 042\n[Reflexion - Shinn et al., 2023]"]
         PayloadA --> SandboxA --> EvalA
     end
 
     subgraph SUBAGENT_B["🤖 Subagente Efímero B (HubSpot)"]
         PayloadB["Payload Quirúrgico:\n- TASK-043-hubspot.md\n- invariants.md\n- hubspot.adapter.ts"]
         SandboxB["Sandbox Aislado\n(DevContainer / MicroVM)"]
-        EvalB["Bucle Self-Healing:\nevals/harness.mjs --task 043\n[Reflexion - Shinn et al., 2023]"]
+        EvalB["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 043\n[Reflexion - Shinn et al., 2023]"]
         PayloadB --> SandboxB --> EvalB
     end
 
@@ -100,7 +100,7 @@ Enviar 100 esquemas JSON/OpenAPI en cada turno consume 15,000–30,000 tokens po
 
 ```mermaid
 flowchart LR
-    UserQuery["Usuario: 'Sincroniza el lead con Salesforce y avisa por Slack'"] --> Router["1. Dynamic Tool Router\n(Embeddings / Fast LLM < 50ms)\n[ToolBench - Qin et al., ICLR 2024]"]
+    UserQuery["Usuario: 'Sincroniza el lead con Salesforce y avisa por Slack'"] --> Router["1. Dynamic Tool Router\n(Embeddings / Fast LLM < 50ms)\n[ToolBench - Qin et al., ICLR 2024]\n[Gorilla - Patil et al., 2023]"]
     
     subgraph TOOL_CATALOG["Catálogo de 100+ Herramientas (Vector DB)"]
         T1["Salesforce Tools"]
@@ -118,41 +118,152 @@ flowchart LR
 
 | Pilar | Mecanismo | Evidencia Científica | Impacto Cuantitativo |
 | :--- | :--- | :--- | :--- |
-| **1. Dynamic Tool Selection** | Enrutador semántico de 2 fases (Vector Search filtra top 3 herramientas de 100). | **ToolLLM / ToolBench** (*Qin et al., ICLR 2024* [^6]). | **Reducción del 98.6%** en tokens de entrada (de 25k a ~350 tokens). |
+| **1. Dynamic Tool Selection** | Enrutador semántico de 2 fases (Vector Search filtra top 3 herramientas de 100). | **ToolLLM / ToolBench** (*Qin et al., ICLR 2024* [^6]); **Gorilla** (*Patil et al., UC Berkeley 2023* [^12]). | **Reducción del 98.6%** en tokens de entrada (de 25k a ~350 tokens). |
 | **2. Multi-LLM Tiering & Cascade** | Tier 0 (Local/PII) $\rightarrow$ Tier 1 (Fast Router/Gemini Flash) $\rightarrow$ Tier 2 (Reasoning/Claude Sonnet). | **FrugalGPT** (*Chen, Zaharia & Zou, Stanford / TMLR 2024* [^7]). | **Hasta un 98% de reducción de costo** igualando la precisión de modelos de frontera. |
 | **3. Semantic Caching 3-Layers** | L1 (Exact Redis Match) $\rightarrow$ L2 (Vector Similarity > 0.96) $\rightarrow$ L3 (Inferencia LLM). | **GPTCache** (*Fu Bang, ACL NLP-OSS 2023* [^8]). | **Reducción de latencia del 92%** y ahorro del 40-60% en consultas repetidas. |
-| **4. Structured JSON Outputs** | Respuestas limitadas a esquemas Zod/Typebox sin texto conversacional superfluo. | Type-constrained decoding (*Zheng et al., SGLang 2024*). | **Reducción de hasta un 70%** en tokens de salida (los más costosos). |
+| **4. Structured JSON Outputs** | Respuestas limitadas a esquemas Zod/Typebox sin texto conversacional superfluo. | **SGLang** (*Zheng et al., UC Berkeley / Stanford 2024* [^13]). | **Reducción de hasta un 70%** en tokens de salida (los más costosos). |
 
 ---
 
-## 3. Garantías de Implementación por Plataforma
+## 3. Garantías de Implementación por Plataforma (Visible & Ejecutable)
 
-Para que este framework opere de forma idéntica en cualquier cliente de desarrollo agéntico:
+A continuación se detalla la configuración exacta, visible y directamente ejecutable para cada plataforma de desarrollo agéntico:
+
+```mermaid
+flowchart TD
+    subgraph CLIENTS["Plataformas de Desarrollo Agéntico"]
+        A["Antigravity IDE & CLI (agy)"]
+        B["Claude Code"]
+        C["Codex / Cursor / Prime-Agent"]
+    end
+
+    subgraph ENGINE["Mecanismos Nativos de Inyección"]
+        A --> A1[".agents/rules/invariants.md + SKILL.md + Knowledge Items"]
+        B --> B1["CLAUDE.md Root + .claude/commands/"]
+        C --> C1[".cursorrules / .codex/rules + MCP Servers"]
+    end
+
+    subgraph UNIVERSAL["Cortafuegos Universal Inmune a la IA"]
+        A1 --> G["Pre-Commit Hooks (Lefthook + dependency-cruiser + Gitleaks)"]
+        B1 --> G
+        C1 --> G
+        G --> H["CI Pipeline (GitHub Actions Matrix Test)"]
+    end
+```
+
+---
 
 ### 3.1. Antigravity IDE & Antigravity CLI (`agy`)
-- **Customizations Root:** Configuración en `.agents/` (workspace) y `~/.gemini/config/` (global).
-- **Rules Invariants:** Las reglas en `.agents/rules/invariants.md` se inyectan automáticamente en el sistema del modelo en cada invocación.
-- **Skills On-Demand:** Cheatsheets y flujos en `.agents/skills/<nombre>/SKILL.md` cargados por demanda según el dominio activo.
-- **Knowledge Items (KI):** Contexto pre-computado y persistido en `.gemini/antigravity-ide/knowledge` que sobrevive reinicios.
-- **Spawneo de Subagentes:** Uso nativo de herramientas de subagentes para bifurcar tareas complejas en hilos independientes.
 
-### 3.2. Claude Code
-- **`CLAUDE.md` en Raíz:** Actúa como memoria raíz inmutable que sobrevive a comandos `/compact`.
-- **Slash Commands (`.claude/commands/`):** Comandos `/eval`, `/handoff` y `/check-invariants` automatizados.
-- **Micro-Context Pruning:** Ejecución en terminales sandboxed con reinicio de contexto entre tareas mayores.
+Antigravity proporciona soporte nativo de primera clase para la arquitectura de doble riel mediante los siguientes puntos de extensión:
 
-### 3.3. Codex / Prime-Agent / Pi / Cursor
-- **`.cursorrules` / `.codex/rules`:** Configuración basada en patrones glob (`src/integrations/**` $\rightarrow$ inyecta `invariants.md` y `IntegrationAdapter`).
-- **Model Context Protocol (MCP):** Herramientas expuestas vía `mcp-servers.json` que validan tipado antes de interactuar con el sistema operativo.
-- **El Guardián Universal (Git Hooks + CI):** Pre-commit hooks (`Lefthook` + `dependency-cruiser` + `gitleaks` + `evals/harness.mjs` bajo el paradigma *SWE-bench* [^9]) que bloquean cualquier violación independientemente de si el cliente de IA respetó o no las instrucciones.
+#### A. Inyección de Invariantes Globales y de Workspace
+Coloca las reglas invariantes en `.agents/rules/invariants.md` (a nivel de repositorio) o en `~/.gemini/config/rules/invariants.md` (a nivel global). Antigravity inyecta estas directrices automáticamente en cada invocación:
+```markdown
+# /path/to/repo/.agents/rules/invariants.md
+- NUNCA accedas a SQL/DB directamente desde controladores o adapters.
+- Todo endpoint nuevo requiere validación de schema declarativo (Zod/Pydantic).
+- Toda llamada externa debe contar con timeout y Circuit Breaker.
+```
+
+#### B. Habilidades Bajo Demanda (`SKILL.md`)
+En lugar de saturar el contexto inicial, define habilidades modulares en `.agents/skills/<skill_name>/SKILL.md`:
+```markdown
+---
+name: salesforce-integration
+description: Flujo de trabajo y validaciones para el conector de Salesforce
+---
+# Instrucciones de la Habilidad
+1. Ejecutar pruebas con: `npm test -- src/integrations/crm/salesforce`
+2. Validar tipos estrictos de OAuth2 en `src/integrations/crm/salesforce/types.ts`
+```
+
+#### C. Memoria Persistente con Knowledge Items (KI)
+Los KIs almacenan contexto pre-computado y resúmenes de arquitectura en `<appDataDir>/knowledge/` que sobreviven a reinicios de sesión y caídas de servidor, evitando tener que re-indexar todo el repositorio en cada inicio.
 
 ---
 
-## 📌 Fórmula de Gobernanza y Eficiencia
+### 3.2. Claude Code
 
-$$\text{Gobernanza Confiable} = \underbrace{\text{Invariantes Breves}}_{\text{Mitiga Lost-in-the-Middle [^1]}} + \underbrace{\text{Subagentes Aislados}}_{\text{SOPs MetaGPT [^3]}} + \underbrace{\text{Gates Deterministas (Linter/Hooks)}}_{\text{Evaluación SWE-bench [^9]}}$$
+Claude Code utiliza un sistema de anclaje basado en la raíz y comandos de terminal optimizados:
 
-$$\text{Tokenomics Eficiente} = \underbrace{\text{Enrutamiento Vectorial de Tools}}_{\text{ToolBench 2-Stage Retrieval [^6]}} + \underbrace{\text{Semantic Cache}}_{\text{GPTCache L1/L2 [^8]}} + \underbrace{\text{Multi-LLM Tiering}}_{\text{FrugalGPT Cascade [^7]}}$$
+#### A. Archivo Raíz Inmutable (`CLAUDE.md`)
+Crea `CLAUDE.md` en la raíz del proyecto. Este archivo **persiste intacto tras ejecutar el comando `/compact`**:
+```markdown
+# Reglas de Proyecto para Claude Code
+- Al iniciar: Lee HANDOFF.md para asimilar el estado actual.
+- Antes de cerrar: Corre `npm run lint && npm test` y actualiza CHANGELOG.md.
+- Sigue los invariantes definidos en `.agents/rules/invariants.md`.
+```
+
+#### B. Slash Commands de Sesión (`.claude/commands/`)
+Crea atajos para automatizar la gobernanza:
+- `.claude/commands/eval`: Ejecuta `node evals/harness.mjs`.
+- `.claude/commands/handoff`: Ejecuta el script que resume los commits recientes y actualiza `HANDOFF.md`.
+
+---
+
+### 3.3. Codex / Prime-Agent / Pi / Cursor
+
+Para clientes que utilizan `.cursorrules` o especificaciones basadas en Model Context Protocol (MCP):
+
+#### A. Inyección Contextual por Patrón Glob (`.cursorrules` / `.codex/rules`)
+Configura reglas que se activen **únicamente cuando el agente toque archivos específicos**:
+```yaml
+# .cursorrules
+rules:
+  - pattern: "src/integrations/**"
+    instructions: "Este archivo es un conector externo. Prohibido importar drivers de BD directos. Usa la interfaz IntegrationAdapter y maneja errores con CircuitBreaker."
+  - pattern: "src/core/**"
+    instructions: "Capa de Dominio. No introduzcas dependencias de frameworks web (Express/Nest)."
+```
+
+#### B. Catálogo MCP de Herramientas Locales (`.agents/mcp/mcp-servers.json`)
+Expone herramientas deterministas para que el agente inspeccione el repo sin ejecutar comandos arbitrarios:
+```json
+{
+  "mcpServers": {
+    "crm-inspector": {
+      "command": "node",
+      "args": ["scripts/mcp-inspector.mjs"],
+      "tools": [
+        { "name": "get_active_connectors", "description": "Lista los 100+ conectores activos" },
+        { "name": "run_eval_harness", "description": "Ejecuta el evaluador SWE-bench" }
+      ]
+    }
+  }
+}
+```
+
+---
+
+### 3.4. El Guardián Universal: Git Pre-Commit Hooks & CI Determinista
+
+Este es el **cortafuegos definitivo**. Si el modelo alucina, sufre amnesia por contexto saturado o ignora todas las instrucciones, este hook **bloquea físicamente el commit**:
+
+#### Configuración de `lefthook.yml` en la Raíz:
+```yaml
+# lefthook.yml
+pre-commit:
+  parallel: false
+  commands:
+    gitleaks:
+      run: npx gitleaks protect --staged --verbose
+    dependency-cruiser:
+      run: npx depcruise --config .dependency-cruiser.js src
+    typecheck:
+      run: npm run typecheck
+    eval-harness:
+      run: node evals/harness.mjs --task eval-task-001
+```
+
+---
+
+## 📌 Fórmula Maestra de Gobernanza y Eficiencia
+
+$$\text{Gobernanza Confiable} = \underbrace{\text{Invariantes Breves}}_{\text{Mitiga Lost-in-the-Middle [^1]}} + \underbrace{\text{Subagentes Aislados}}_{\text{SOPs MetaGPT [^3]} + \text{Compound AI [^10]}} + \underbrace{\text{Gates Deterministas (Linter/Hooks)}}_{\text{Evaluación SWE-bench [^9]}}$$
+
+$$\text{Tokenomics Eficiente} = \underbrace{\text{Enrutamiento Vectorial de Tools}}_{\text{ToolBench 2-Stage [^6]} + \text{Gorilla [^12]}} + \underbrace{\text{Semantic Cache}}_{\text{GPTCache L1/L2 [^8]}} + \underbrace{\text{Multi-LLM Tiering}}_{\text{FrugalGPT Cascade [^7]} + \text{Structured Output [^13]}}$$
 
 ---
 
@@ -167,3 +278,8 @@ $$\text{Tokenomics Eficiente} = \underbrace{\text{Enrutamiento Vectorial de Tool
 [^7]: **Chen, L., Zaharia, M., & Zou, J. (2024).** *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance.* Transactions on Machine Learning Research (TMLR 2024). [arXiv:2305.05176](https://arxiv.org/abs/2305.05176). *(Stanford University)*.
 [^8]: **Bang, F. (2023).** *GPTCache: An Open-Source Semantic Cache for LLM Applications Enabling Faster Answers and Cost Savings.* Proceedings of the 3rd Workshop for Natural Language Processing Open Source Software (NLP-OSS 2023), 147-152.
 [^9]: **Jimenez, C. E., Yang, J., Wettig, A., et al. (2024).** *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* International Conference on Learning Representations (ICLR 2024). [arXiv:2310.06770](https://arxiv.org/abs/2310.06770). *(Princeton University)*.
+[^10]: **Zaharia, M., Chen, L., et al. (2024).** *The Shift from Models to Compound AI Systems.* Berkeley Artificial Intelligence Research (BAIR) Blog / Communications of the ACM (CACM). [Link](https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/). *(UC Berkeley, Stanford & Databricks)*.
+[^11]: **Schluntz, E., & Zhang, B. (2024).** *Building Effective Agents.* Anthropic Research. [Link](https://www.anthropic.com/research/building-effective-agents).
+[^12]: **Patil, S. G., Zhang, T., Wang, X., & Gonzalez, J. E. (2023).** *Gorilla: Large Language Model Connected with Massive APIs.* arXiv preprint [arXiv:2305.15334](https://arxiv.org/abs/2305.15334). *(UC Berkeley)*.
+[^13]: **Zheng, L., Yin, L., Xie, Z., et al. (2024).** *SGLang: Efficient Execution of Structured Language Model Programs.* arXiv preprint [arXiv:2312.07104](https://arxiv.org/abs/2312.07104). *(UC Berkeley & Stanford)*.
+[^14]: **Wu, Q., Bansal, G., Zhang, J., et al. (2023).** *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.* arXiv preprint [arXiv:2308.08155](https://arxiv.org/abs/2308.08155). *(Microsoft Research)*.
