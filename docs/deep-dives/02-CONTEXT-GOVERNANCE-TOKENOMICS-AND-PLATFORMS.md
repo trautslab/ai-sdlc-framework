@@ -261,9 +261,21 @@ pre-commit:
 
 ## 📌 Fórmula Maestra de Gobernanza y Eficiencia
 
-$$\text{Gobernanza Confiable} = \underbrace{\text{Invariantes Breves}}_{\text{Mitiga Lost-in-the-Middle [^1]}} + \underbrace{\text{Subagentes Aislados}}_{\text{SOPs MetaGPT [^3]} + \text{Compound AI [^10]}} + \underbrace{\text{Gates Deterministas (Linter/Hooks)}}_{\text{Evaluación SWE-bench [^9]}}$$
+$$
+\text{Gobernanza Confiable} = \underbrace{\text{Invariantes Breves}}_{\text{Mitiga Lost-in-the-Middle}} + \underbrace{\text{Subagentes Aislados}}_{\text{SOPs MetaGPT + Compound AI}} + \underbrace{\text{Gates Deterministas}}_{\text{Evaluación SWE-bench}}
+$$
 
-$$\text{Tokenomics Eficiente} = \underbrace{\text{Enrutamiento Vectorial de Tools}}_{\text{ToolBench 2-Stage [^6]} + \text{Gorilla [^12]}} + \underbrace{\text{Semantic Cache}}_{\text{GPTCache L1/L2 [^8]}} + \underbrace{\text{Multi-LLM Tiering}}_{\text{FrugalGPT Cascade [^7]} + \text{Structured Output [^13]}}$$
+$$
+\text{Tokenomics Eficiente} = \underbrace{\text{Enrutamiento Vectorial}}_{\text{ToolBench + Gorilla}} + \underbrace{\text{Semantic Cache}}_{\text{GPTCache L1/L2}} + \underbrace{\text{Multi-LLM Tiering}}_{\text{FrugalGPT Cascade + SGLang}}
+$$
+
+#### Desglose de Fundamentación Científica:
+- **Invariantes Breves:** Mitiga la pérdida de atención del fenómeno *Lost-in-the-Middle* ([^1]).
+- **Subagentes Aislados:** Protocolos SOPs de *MetaGPT* ([^3]) y paradigma *Compound AI Systems* ([^10], [^11], [^14]).
+- **Gates Deterministas:** Validación mediante sandboxes reproducibles (*SWE-bench* [^9]) y auto-corrección verbal (*Reflexion* [^5]).
+- **Enrutamiento Vectorial:** Selección de herramientas en 2 fases con *ToolBench* ([^6]) y *Gorilla* ([^12]).
+- **Semantic Cache:** Reducción de latencia y costos mediante caché vectorial multi-capa (*GPTCache* [^8]).
+- **Multi-LLM Tiering:** Enrutamiento en cascada de costo mínimo (*FrugalGPT* [^7]) y decodificación estructurada (*SGLang* [^13]).
 
 ---
 
