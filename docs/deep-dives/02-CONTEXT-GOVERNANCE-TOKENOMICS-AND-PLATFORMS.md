@@ -34,7 +34,67 @@ flowchart TD
 ### Mecanismos del Riel Suave (Cognitivo Rehidratable)
 1. **Invariantes Breves:** Las reglas maestras en `AGENTS.md` ocupan menos de 25 líneas para sobrevivir a resúmenes y compactaciones.
 2. **State Checkpoints Inmutables (`HANDOFF.md`):** Al compactar, el modelo solo ingiere el snapshot de estado (< 300 tokens) sin reprocesar miles de líneas de historial previo.
-3. **Subagentes Efímeros (Divide & Conquer):** Las tareas complejas se delegan a subagentes con ventanas de contexto limpias que contienen únicamente `TASK-XXX.md` y el conector específico.
+3. **Subagentes Efímeros (Divide & Conquer & Zero-Context Pollution):**
+   Las tareas complejas **NUNCA** deben ejecutarse en una única ventana de contexto monolítica. El agente orquestador divide el trabajo y despacha subagentes con ventanas de contexto limpias, aisladas y de un solo propósito.
+
+---
+
+### 🔬 1.3. Arquitectura Profunda de Subagentes Efímeros (Divide & Conquer)
+
+Cuando un proyecto escala a más de 100 herramientas o módulos complejos, acumular 80 turnos de conversación en una sola ventana de contexto degrada exponencialmente la capacidad de razonamiento del LLM (*Attention Degradation*).
+
+```mermaid
+flowchart TD
+    Orchestrator["👑 AGENTE ORQUESTADOR\n(Contexto Global: HANDOFF.md + Roadmap)"]
+    
+    subgraph SUBAGENT_A["🤖 Subagente Efímero A (Salesforce)"]
+        PayloadA["Payload Quirúrgico:\n- TASK-042-salesforce.md\n- invariants.md\n- salesforce.adapter.ts"]
+        SandboxA["Sandbox Aislado\n(DevContainer / MicroVM)"]
+        EvalA["Bucle Self-Healing:\nevals/harness.mjs --task 042"]
+        PayloadA --> SandboxA --> EvalA
+    end
+
+    subgraph SUBAGENT_B["🤖 Subagente Efímero B (HubSpot)"]
+        PayloadB["Payload Quirúrgico:\n- TASK-043-hubspot.md\n- invariants.md\n- hubspot.adapter.ts"]
+        SandboxB["Sandbox Aislado\n(DevContainer / MicroVM)"]
+        EvalB["Bucle Self-Healing:\nevals/harness.mjs --task 043"]
+        PayloadB --> SandboxB --> EvalB
+    end
+
+    Orchestrator -->|1. Spawnea con contexto limpio| SUBAGENT_A
+    Orchestrator -->|1. Spawnea con contexto limpio| SUBAGENT_B
+
+    EvalA -- 2. Retorna Diff + Status 200 --> BubbleUpA["Reporte Estructurado:\n- Status: PASSED\n- Files: salesforce.adapter.ts\n- Tests: 100%"]
+    EvalB -- 2. Retorna Diff + Status 200 --> BubbleUpB["Reporte Estructurado:\n- Status: PASSED\n- Files: hubspot.adapter.ts\n- Tests: 100%"]
+
+    BubbleUpA --> Orchestrator
+    BubbleUpB --> Orchestrator
+    
+    Orchestrator -->|3. Actualiza estado y destruye subagentes| Release["Actualiza CHANGELOG.md & HANDOFF.md"]
+```
+
+#### Reglas de Operación para Subagentes Efímeros:
+1. **Zero-Pollution Payload (Inyección Quirúrgica de Contexto):**
+   - El subagente nace con **0 tokens de historial de chat previo**.
+   - Solo se le inyectan 3 archivos:
+     - El contrato específico: `.agents/tasks/TASK-XXX.md`.
+     - Las reglas no negociables: `.agents/rules/invariants.md`.
+     - El archivo fuente del conector sobre el cual trabajará (e.g. `src/integrations/crm/salesforce.adapter.ts`).
+2. **Límites de Presupuesto y Turnos (Circuit Breaker de Ejecución):**
+   - Cada subagente tiene un límite estricto: máximo 15 turnos de herramientas o $0.50 USD de consumo de tokens.
+   - Si tras 15 turnos no logra que `evals/harness.mjs` pase, el subagente se aborta, previene bucles infinitos y notifica al orquestador con el error exacto.
+3. **Bubble-Up Estructurado (Retorno sin Ruido):**
+   - El subagente no devuelve todo su monólogo interno al orquestador.
+   - Al terminar, se destruye y solo emite un JSON estructurado:
+     ```json
+     {
+       "taskId": "TASK-042",
+       "status": "PASSED",
+       "filesModified": ["src/integrations/crm/salesforce/salesforce.adapter.ts"],
+       "testsPassed": 6,
+       "diffSummary": "Added OAuth2 token refresh with Redlock distributed lock."
+     }
+     ```
 
 ---
 
@@ -71,13 +131,24 @@ flowchart LR
 
 ## 3. Garantías de Implementación por Plataforma
 
-```markdown
-| Plataforma / Entorno | Mecanismo de Garantía Inmune a la Compactación |
-| :--- | :--- |
-| **Antigravity IDE & agy CLI** | • Rules Globales y de Workspace (`.agents/rules/invariants.md`).<br>• Skills On-Demand (`.agents/skills/<name>/SKILL.md`).<br>• Knowledge Items (KI) cacheados que sobreviven a reinicios.<br>• Spawneo de subagentes aislados con contexto limpio. |
-| **Claude Code** | • `CLAUDE.md` en raíz (persiste tras `/compact`).<br>• Slash commands (`.claude/commands/`) para recolección de contexto.<br>• Sandboxing estricto de herramientas CLI. |
-| **Codex / Prime-Agent / Pi / Cursor** | • `.cursorrules` / `.codex/rules` inyectadas por patrón de archivo.<br>• Model Context Protocol (MCP) que valida esquemas de tools.<br>• Guardián universal: Git Hooks (Lefthook) + CI Gates. |
-```
+Para que este framework opere de forma idéntica en cualquier cliente de desarrollo agéntico:
+
+### 3.1. Antigravity IDE & Antigravity CLI (`agy`)
+- **Customizations Root:** Configuración en `.agents/` (workspace) y `~/.gemini/config/` (global).
+- **Rules Invariants:** Las reglas en `.agents/rules/invariants.md` se inyectan automáticamente en el sistema del modelo en cada invocación.
+- **Skills On-Demand:** Cheatsheets y flujos en `.agents/skills/<nombre>/SKILL.md` cargados por demanda según el dominio activo.
+- **Knowledge Items (KI):** Contexto pre-computado y persistido en `.gemini/antigravity-ide/knowledge` que sobrevive reinicios.
+- **Spawneo de Subagentes:** Uso nativo de herramientas de subagentes para bifurcar tareas complejas en hilos independientes.
+
+### 3.2. Claude Code
+- **`CLAUDE.md` en Raíz:** Actúa como memoria raíz inmutable que sobrevive a comandos `/compact`.
+- **Slash Commands (`.claude/commands/`):** Comandos `/eval`, `/handoff` y `/check-invariants` automatizados.
+- **Micro-Context Pruning:** Ejecución en terminales sandboxed con reinicio de contexto entre tareas mayores.
+
+### 3.3. Codex / Prime-Agent / Pi / Cursor
+- **`.cursorrules` / `.codex/rules`:** Configuración basada en patrones glob (`src/integrations/**` $\rightarrow$ inyecta `invariants.md` y `IntegrationAdapter`).
+- **Model Context Protocol (MCP):** Herramientas expuestas vía `mcp-servers.json` que validan tipado antes de interactuar con el sistema operativo.
+- **El Guardián Universal (Git Hooks + CI):** Pre-commit hooks (`Lefthook` + `dependency-cruiser` + `gitleaks` + `evals/harness.mjs`) que bloquean cualquier violación independientemente de si el cliente de IA respetó o no las instrucciones.
 
 ---
 
