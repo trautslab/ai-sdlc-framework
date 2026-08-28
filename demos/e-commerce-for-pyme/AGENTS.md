@@ -16,6 +16,7 @@ Este documento es el **punto de anclaje inicial** que cualquier agente de IA (An
 2. **Reserva Atómica de Stock:** Las órdenes deben reservar inventario dentro de una transacción SQL con bloqueo optimista/pesimista para prevenir sobreventa (*Overselling*).
 3. **Desacoplamiento de Courier:** Las cotizaciones de CourierFast deben tener un timeout máximo de 2.5s y fallback a tarifa plana local si el servicio de courier no responde.
 4. **Cero Consultas N+1 en Catálogo:** Las búsquedas de 2,500 productos deben responder en `< 1.0s` utilizando caché de Redis indexada por categoría/SKU.
+5. **Zero Half-Done Policy:** Toda entrega debe ejecutarse en vivo (`npm test`, `npm run demo:live`, `npm run eval:task`) con 100% de aserciones verdes desde la primera iteración.
 
 ---
 

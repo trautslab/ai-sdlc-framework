@@ -1,28 +1,16 @@
 {
   "id": "task-001",
-  "name": "Verificación del Módulo de Checkout y Reserva de Stock",
+  "name": "Verificación Integral de Arquitectura, Tipado y Tests del MVP Core de ShopFast",
   "checks": [
     {
-      "id": "check-order-service",
-      "description": "El servicio de órdenes src/modules/orders/order.service.ts debe existir",
+      "id": "check-architecture-docs",
+      "description": "La matriz de trazabilidad docs/INDEX.md y C4 deben existir",
       "type": "file_exists",
-      "path": "src/modules/orders/order.service.ts"
+      "path": "docs/INDEX.md"
     },
     {
-      "id": "check-stripe-adapter",
-      "description": "El adaptador de Stripe src/integrations/payments/stripe.adapter.ts debe existir",
-      "type": "file_exists",
-      "path": "src/integrations/payments/stripe.adapter.ts"
-    },
-    {
-      "id": "check-catalog-service",
-      "description": "El servicio de catálogo src/modules/catalog/catalog.service.ts debe existir",
-      "type": "file_exists",
-      "path": "src/modules/catalog/catalog.service.ts"
-    },
-    {
-      "id": "check-use-case-spec",
-      "description": "La especificación del caso de uso docs/use-cases/UC-003-checkout-stripe.md debe existir",
+      "id": "check-use-case-bdd",
+      "description": "El caso de uso formal con BDD Gherkin docs/use-cases/UC-003-checkout-stripe.md debe existir",
       "type": "file_exists",
       "path": "docs/use-cases/UC-003-checkout-stripe.md"
     },
@@ -31,6 +19,18 @@
       "description": "El diagrama de secuencia docs/diagrams/sequences/SEQ-001-checkout-stripe.md debe existir",
       "type": "file_exists",
       "path": "docs/diagrams/sequences/SEQ-001-checkout-stripe.md"
+    },
+    {
+      "id": "check-runnable-unit-tests",
+      "description": "Ejecutar la suite de tests unitarios de Orders, Catalog y Stripe con aserciones reales",
+      "type": "command",
+      "command": "node --test src/**/*.test.mjs"
+    },
+    {
+      "id": "check-live-demo-execution",
+      "description": "Ejecutar la simulación interactiva de checkout en vivo (scripts/demo-live-checkout.mjs)",
+      "type": "command",
+      "command": "node scripts/demo-live-checkout.mjs"
     }
   ]
 }

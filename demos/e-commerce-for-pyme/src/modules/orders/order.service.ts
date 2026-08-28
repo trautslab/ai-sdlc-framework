@@ -1,15 +1,18 @@
-import { CreateOrderDTO, Order } from './order.types';
-import { StripePaymentAdapter } from '../../integrations/payments/stripe.adapter';
+import type { CreateOrderDTO, Order } from './order.types.ts';
+import { StripePaymentAdapter } from '../../integrations/payments/stripe.adapter.ts';
 
 /**
  * 🛒 OrderService
  * Orquestador transaccional del proceso de Checkout con reserva atómica de stock.
  */
 export class OrderService {
-  constructor(
-    private readonly dbPool: any,
-    private readonly stripeAdapter: StripePaymentAdapter
-  ) {}
+  dbPool: any;
+  stripeAdapter: StripePaymentAdapter;
+
+  constructor(dbPool: any, stripeAdapter: StripePaymentAdapter) {
+    this.dbPool = dbPool;
+    this.stripeAdapter = stripeAdapter;
+  }
 
   async createOrder(dto: CreateOrderDTO): Promise<{ order: Order; clientSecret?: string }> {
     // 1. Calcular totales y validar regla de envío gratis (> $50,000)

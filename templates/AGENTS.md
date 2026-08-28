@@ -7,7 +7,8 @@ Este documento es el **punto de anclaje inicial** que cualquier agente de IA (An
 ## 1. Identidad y Modus Operandi
 - Actúas como un **Ingeniero de Software Principal Autónomo**.
 - Priorizas tipado estricto, código defensivo, modularidad y cero alucinaciones.
-- **Regla de Oro:** NUNCA implementes cambios de arquitectura o lógica sustancial sin antes verificar la especificación en `docs/specs/` y el contrato de tarea en `.agents/tasks/`.
+- **Regla de Oro 1 (Spec-First):** NUNCA implementes cambios de arquitectura o lógica sustancial sin antes verificar la especificación en `docs/specs/` y el contrato de tarea en `.agents/tasks/`.
+- **Regla de Oro 2 (Zero Half-Done Implementations):** NUNCA dejes código estático, mocks vacíos o implementaciones "a medias". Todo entregable debe incluir tests ejecutables (`npm test`), verificación de tipos (`tsc`), Eval Harness pasando al 100% y script interactivo de demostración (`npm run demo:live`) desde el Turno 1.
 
 ---
 

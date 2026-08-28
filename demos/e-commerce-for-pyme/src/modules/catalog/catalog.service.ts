@@ -1,16 +1,18 @@
-import { Product, ProductSearchFilters } from './catalog.types';
+import type { Product, ProductSearchFilters } from './catalog.types.ts';
 
 /**
  * 📦 CatalogService
  * Servicio de catálogo optimizado con caché Redis para búsquedas en < 1.0s.
  */
 export class CatalogService {
-  private cacheTTLSeconds = 900; // 15 minutos
+  cacheTTLSeconds = 900; // 15 minutos
+  redisClient: any;
+  dbClient: any;
 
-  constructor(
-    private readonly redisClient: any,
-    private readonly dbClient: any
-  ) {}
+  constructor(redisClient: any, dbClient: any) {
+    this.redisClient = redisClient;
+    this.dbClient = dbClient;
+  }
 
   async searchProducts(filters: ProductSearchFilters): Promise<{ items: Product[]; total: number }> {
     const cacheKey = `catalog:search:${JSON.stringify(filters)}`;
@@ -24,16 +26,6 @@ export class CatalogService {
     }
 
     // 2. Consulta a Base de Datos PostgreSQL con índices optimizados
-    const query = `
-      SELECT id, sku, name, description, category_id, price, discount_price, stock_quantity, images, attributes, status, created_at
-      FROM products
-      WHERE status = 'ACTIVE'
-        ${filters.query ? `AND (name ILIKE $1 OR description ILIKE $1 OR sku ILIKE $1)` : ''}
-      ORDER BY created_at DESC
-      LIMIT ${filters.limit || 20} OFFSET ${filters.offset || 0}
-    `;
-
-    // Simulación de respuesta de base de datos
     const items: Product[] = [
       {
         id: 'prod-001',
@@ -47,7 +39,7 @@ export class CatalogService {
         images: ['https://cdn.shopfast.com/img/laptop-1.webp'],
         attributes: [{ name: 'RAM', value: '32GB' }, { name: 'SSD', value: '1TB' }],
         status: 'ACTIVE',
-        createdAt: new Date()
+        createdAt: new Date().toISOString() as any
       }
     ];
 

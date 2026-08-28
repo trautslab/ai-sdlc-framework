@@ -17,10 +17,13 @@ export interface ShippingQuoteResult {
  * Adaptador de logística para la API REST de CourierFast.
  */
 export class CourierFastAdapter {
-  constructor(private readonly apiKey: string) {}
+  apiKey: string;
+
+  constructor(apiKey: string) {
+    this.apiKey = apiKey;
+  }
 
   async quoteShipping(params: ShippingQuoteParams): Promise<ShippingQuoteResult> {
-    // Cotización basada en ciudad y dimensiones con fallback defensivo
     const isCapital = ['Bogota', 'Medellin', 'Cali', 'CDMX', 'Guadalajara'].includes(params.destinationCity);
 
     return {

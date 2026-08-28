@@ -26,6 +26,10 @@ Su propósito es garantizar rigor técnico, diseño previo a la codificación, c
 5. **Trazabilidad Semántica Rigurosa:**
    - Mapeo 1:1 entre **Conventional Commits**, la sección `[Unreleased]` de `CHANGELOG.md` y las versiones bajo **SemVer** (`MAJOR.MINOR.PATCH`).
 
+6. **"Zero Half-Done Implementations" (Ejecución Completa desde el Turno 1):**
+   - Toda inicialización de proyecto, módulo o demo DEBE entregarse con su suite de tests ejecutables (`npm test`), configuración de tipos (`tsconfig.json`), pre-commit hooks (`lefthook.yml`), Eval Harness funcional (`evals/harness.mjs`) y script de demostración interactiva (`npm run demo:live`).
+   - Queda estrictamente prohibido dejar código estático no ejecutable, aserciones vacías o componentes "a medias".
+
 ---
 
 ## 2. Arquitectura del Repositorio Agentic-Native

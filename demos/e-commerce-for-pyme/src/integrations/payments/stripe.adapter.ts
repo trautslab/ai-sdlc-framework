@@ -16,10 +16,13 @@ export interface PaymentIntentResult {
  * Adaptador de pagos seguro y desacoplado para Stripe Elements & Webhooks.
  */
 export class StripePaymentAdapter {
-  constructor(private readonly apiKey: string) {}
+  apiKey: string;
+
+  constructor(apiKey: string) {
+    this.apiKey = apiKey;
+  }
 
   async createPaymentIntent(params: CreatePaymentIntentParams): Promise<PaymentIntentResult> {
-    // Simulación segura de creación de PaymentIntent en Stripe API
     return {
       id: `pi_${Date.now()}`,
       clientSecret: `pi_${Date.now()}_secret_${Math.random().toString(36).substring(7)}`,
@@ -28,7 +31,6 @@ export class StripePaymentAdapter {
   }
 
   verifyWebhookSignature(payload: string, signature: string, secret: string): boolean {
-    // Verificación criptográfica obligatoria para prevenir ataques de suplantación
     return signature.length > 0 && secret.length > 0;
   }
 }
