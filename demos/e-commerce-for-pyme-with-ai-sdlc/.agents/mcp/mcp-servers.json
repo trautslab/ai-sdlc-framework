@@ -1,0 +1,30 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema.json",
+  "name": "shopfast-tools",
+  "description": "Herramientas locales para inspección de catálogo, simulación de webhooks y test harness de ShopFast",
+  "mcpServers": {
+    "shopfast-inspector": {
+      "command": "node",
+      "args": ["scripts/mcp-shopfast.mjs"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "capabilities": {
+        "tools": [
+          {
+            "name": "simulate_stripe_webhook",
+            "description": "Dispara un evento mock de payment_intent.succeeded para pruebas de checkout"
+          },
+          {
+            "name": "query_product_stock",
+            "description": "Consulta el inventario disponible de un SKU específico en tiempo real"
+          },
+          {
+            "name": "run_eval_harness",
+            "description": "Ejecuta el evaluador de tareas de ShopFast"
+          }
+        ]
+      }
+    }
+  }
+}
