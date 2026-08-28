@@ -2,6 +2,8 @@
 pre-commit:
   parallel: false
   commands:
+    task-correlatives:
+      run: node scripts/validate-task-ids.mjs
     gitleaks:
       run: npx gitleaks protect --staged --verbose || echo "✅ Cero secretos detectados"
     typecheck:

@@ -3,16 +3,16 @@
   "name": "Suite Integral de Calidad: 7 Tareas y Módulos de ShopFast MVP",
   "checks": [
     {
+      "id": "check-task-correlatives-unique",
+      "description": "Validación estricta de correlativos únicos y registro central en .agents/tasks/INDEX.md",
+      "type": "command",
+      "command": "node scripts/validate-task-ids.mjs"
+    },
+    {
       "id": "check-architecture-docs",
       "description": "Matriz de Trazabilidad docs/INDEX.md y C4 completos",
       "type": "file_exists",
       "path": "docs/INDEX.md"
-    },
-    {
-      "id": "check-all-task-contracts",
-      "description": "Contratos de tareas TASK-001 a TASK-007 en .agents/tasks/",
-      "type": "file_exists",
-      "path": ".agents/tasks/TASK-007-admin-dashboard-and-csv-import.md"
     },
     {
       "id": "check-all-16-unit-tests",

@@ -9,6 +9,7 @@
     "test:coverage": "node --test --experimental-test-coverage src/**/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "npx biome check src/ || echo 'Linter passed'",
+    "validate:tasks": "node scripts/validate-task-ids.mjs",
     "demo:live": "node scripts/demo-live.mjs",
     "eval:task": "node evals/harness.mjs --task task-001"
   },
