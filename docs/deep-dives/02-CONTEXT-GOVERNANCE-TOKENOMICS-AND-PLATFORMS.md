@@ -33,9 +33,11 @@ flowchart TD
 
 ### Mecanismos del Riel Duro (Determinista)
 1. **Linter de Arquitectura:** `dependency-cruiser` bloquea en tiempo de análisis cualquier importación indebida entre capas, impidiendo que el código se compile o pase CI.
-2. **Pre-commit Hooks Inmunes:** `Lefthook` ejecuta `gitleaks` (secretos), `tsc` (tipado estricto) y `commitlint` (SemVer) antes de permitir que cualquier commit se registre en Git.
-3. **Bloqueo Físico de Herramientas:** Si el agente ejecuta una acción no autorizada, el comando finaliza con código de error `1` y le retorna el mensaje explicativo para obligarlo a re-alinearse.
-4. **Bucle de Auto-Corrección Verbal (*Reflexion Paradigm*, Shinn et al., NeurIPS 2023 [^5]):** En lugar de requerir intervención humana, el agente lee el *stack trace* del fallo determinista, formula una reflexión en lenguaje natural y ajusta su implementación de forma autónoma hasta lograr 100% de aserciones verdes.
+2. **Validador de Secuencia y Correlativos de Tareas:** `scripts/validate-task-ids.mjs` impide que cualquier agente cree tareas duplicadas o a ciegas, forzando la sincronización atómica con `.agents/tasks/INDEX.md`.
+3. **Pre-commit Hooks Inmunes:** `Lefthook` ejecuta `gitleaks` (secretos), `tsc` (tipado estricto), validación de correlativos y `commitlint` (SemVer) antes de permitir que cualquier commit se registre en Git.
+4. **Política "Zero Half-Done" (Completitud Ejecutable):** Ninguna tarea o módulo se da por concluida sin una suite de tests unitarios/integración ejecutables (`npm test`) y un comando de Eval Harness con código de salida `0`.
+5. **Bloqueo Físico de Herramientas:** Si el agente ejecuta una acción no autorizada, el comando finaliza con código de error `1` y le retorna el mensaje explicativo para obligarlo a re-alinearse.
+6. **Bucle de Auto-Corrección Verbal (*Reflexion Paradigm*, Shinn et al., NeurIPS 2023 [^5]):** En lugar de requerir intervención humana, el agente lee el *stack trace* del fallo determinista, formula una reflexión en lenguaje natural y ajusta su implementación de forma autónoma hasta lograr 100% de aserciones verdes.
 
 ### Mecanismos del Riel Suave (Cognitivo Rehidratable)
 1. **Invariantes Breves:** Las reglas maestras en `AGENTS.md` ocupan menos de 25 líneas para colocarse al inicio/final del prompt y mitigar el fenómeno *Lost in the Middle* [^1].
@@ -44,52 +46,59 @@ flowchart TD
 
 ---
 
-### 🔬 1.3. Arquitectura Profunda de Subagentes Efímeros (Divide & Conquer)
+### 🔬 1.3. Arquitectura de Subagentes Efímeros & Paralelización con Git Worktrees
 
 Cuando un proyecto escala a más de 100 herramientas o módulos complejos, acumular 80 turnos de conversación en una sola ventana de contexto degrada exponencialmente la capacidad de razonamiento del LLM (*Attention Degradation*).
 
+Para ejecutar múltiples subagentes concurrentemente sin colisiones de archivos ni bloqueos de concurrencia en el sistema de archivos, el framework implementa el **Aislamiento Físico por Git Worktrees**:
+
 ```mermaid
 flowchart TD
-    Orchestrator["👑 AGENTE ORQUESTADOR\n[Compound AI System - Zaharia et al., 2024]\n(Contexto Global: HANDOFF.md + Roadmap)"]
+    Orchestrator["👑 AGENTE ORQUESTADOR\n[Compound AI System - Zaharia et al., 2024]\n(Contexto Global: HANDOFF.md + Task Registry)"]
     
-    subgraph SUBAGENT_A["🤖 Subagente Efímero A (Salesforce)"]
-        PayloadA["Payload Quirúrgico:\n- TASK-042-salesforce.md\n- invariants.md\n- salesforce.adapter.ts"]
-        SandboxA["Sandbox Aislado\n(DevContainer / MicroVM)"]
-        EvalA["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 042\n[Reflexion - Shinn et al., 2023]"]
-        PayloadA --> SandboxA --> EvalA
+    subgraph WORKTREE_A["📁 Git Worktree Aislado (.worktrees/subagent-1)"]
+        PayloadA["Payload Quirúrgico:\n- TASK-001-catalog.md\n- invariants.md\n- src/modules/catalog/"]
+        SubagentA["🤖 Subagente Efímero 1"]
+        EvalA["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 001\n[Reflexion - Shinn et al., 2023]"]
+        PayloadA --> SubagentA --> EvalA
     end
 
-    subgraph SUBAGENT_B["🤖 Subagente Efímero B (HubSpot)"]
-        PayloadB["Payload Quirúrgico:\n- TASK-043-hubspot.md\n- invariants.md\n- hubspot.adapter.ts"]
-        SandboxB["Sandbox Aislado\n(DevContainer / MicroVM)"]
-        EvalB["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 043\n[Reflexion - Shinn et al., 2023]"]
-        PayloadB --> SandboxB --> EvalB
+    subgraph WORKTREE_B["📁 Git Worktree Aislado (.worktrees/subagent-2)"]
+        PayloadB["Payload Quirúrgico:\n- TASK-002-cart.md\n- invariants.md\n- src/modules/cart/"]
+        SubagentB["🤖 Subagente Efímero 2"]
+        EvalB["Bucle Evaluator-Optimizer:\nevals/harness.mjs --task 002\n[Reflexion - Shinn et al., 2023]"]
+        PayloadB --> SubagentB --> EvalB
     end
 
-    Orchestrator -->|1. Spawnea con 0 tokens de chat acumulado| SUBAGENT_A
-    Orchestrator -->|1. Spawnea con 0 tokens de chat acumulado| SUBAGENT_B
+    Orchestrator -->|1. git worktree add -B feat/task-001| WORKTREE_A
+    Orchestrator -->|1. git worktree add -B feat/task-002| WORKTREE_B
 
-    EvalA -- 2. Retorna Diff + Status 200 --> BubbleUpA["Reporte Estructurado (JSON):\n- Status: PASSED\n- Files: salesforce.adapter.ts\n- Tests: 100%"]
-    EvalB -- 2. Retorna Diff + Status 200 --> BubbleUpB["Reporte Estructurado (JSON):\n- Status: PASSED\n- Files: hubspot.adapter.ts\n- Tests: 100%"]
+    EvalA -- 2. 100% Passed -> Commit en feat/task-001 --> BubbleUpA["Reporte Estructurado (JSON):\n- Status: PASSED\n- Tests: 100%\n- Files: catalog.service.ts"]
+    EvalB -- 2. 100% Passed -> Commit en feat/task-002 --> BubbleUpB["Reporte Estructurado (JSON):\n- Status: PASSED\n- Tests: 100%\n- Files: cart.service.ts"]
 
     BubbleUpA --> Orchestrator
     BubbleUpB --> Orchestrator
     
-    Orchestrator -->|3. Actualiza estado y destruye subagentes| Release["Actualiza CHANGELOG.md & HANDOFF.md"]
+    Orchestrator -->|3. Fast-Forward Merge & Desmontaje| Release["git worktree remove & prune\nActualiza CHANGELOG.md & HANDOFF.md"]
 ```
 
 #### Reglas de Operación Respaldadas por la Literatura:
-1. **Zero-Pollution Payload (Inyección Quirúrgica de Contexto):**
+1. **Aislamiento a Nivel de OS con Git Worktrees:**
+   - Cada subagente corre en un directorio físico separado (`.worktrees/subagent-X`) montado en su propia rama efímera (`feat/task-XXX`).
+   - Evita bloqueos de compilación, sobreescrituras accidentales y contención en `node_modules`.
+2. **Zero-Pollution Payload (Inyección Quirúrgica de Contexto):**
    - El subagente nace con **0 tokens de historial de chat previo**.
    - Solo se le inyectan 3 archivos:
      - El contrato específico: `.agents/tasks/TASK-XXX.md`.
      - Las reglas no negociables: `.agents/rules/invariants.md`.
-     - El archivo fuente del conector sobre el cual trabajará (e.g. `src/integrations/crm/salesforce.adapter.ts`).
-2. **Standard Operating Procedures (SOPs) para Multi-Agentes (*MetaGPT*, Hong et al., ICLR 2024 [^3]):**
+     - El Vertical Slice específico sobre el cual trabajará (e.g. `src/modules/catalog/`).
+3. **Registro Atómico de Tareas (Task Correlative Sequence Lock):**
+   - Antes de despachar un subagente, el correlativo `TASK-XXX` se reclama en `.agents/tasks/INDEX.md`, impidiendo que dos agentes generen tareas duplicadas o colisionen en Git.
+4. **Standard Operating Procedures (SOPs) para Multi-Agentes (*MetaGPT*, Hong et al., ICLR 2024 [^3]):**
    - La asignación de roles especializados con protocolos estrictos de entrada/salida reduce las inconsistencias lógicas en un **85%** frente a arquitecturas monolíticas de prompt único.
-3. **Límites de Presupuesto y Turnos (Circuit Breaker de Ejecución):**
+5. **Límites de Presupuesto y Turnos (Circuit Breaker de Ejecución):**
    - Cada subagente tiene un límite estricto: máximo 15 turnos de herramientas o $0.50 USD de consumo de tokens para evitar bucles infinitos.
-4. **Bubble-Up Estructurado (Retorno sin Ruido):**
+6. **Bubble-Up Estructurado (Retorno sin Ruido):**
    - El subagente no devuelve todo su monólogo interno al orquestador; al terminar se destruye y emite únicamente un JSON estructurado tipado.
 
 ---
@@ -218,18 +227,22 @@ rules:
     instructions: "Capa de Dominio. No introduzcas dependencias de frameworks web (Express/Nest)."
 ```
 
-#### B. Catálogo MCP de Herramientas Locales (`.agents/mcp/mcp-servers.json`)
-Expone herramientas deterministas para que el agente inspeccione el repo sin ejecutar comandos arbitrarios:
+#### B. Catálogo MCP de Herramientas Locales sobre Stdio JSON-RPC (`.agents/mcp/mcp-servers.json`)
+Expone herramientas deterministas y seguras para que el agente inspeccione el sistema sin ejecutar comandos `bash` arbitrarios ni destructivos:
 ```json
 {
+  "$schema": "https://modelcontextprotocol.io/schema.json",
   "mcpServers": {
-    "crm-inspector": {
+    "shopfast-inspector": {
       "command": "node",
-      "args": ["scripts/mcp-inspector.mjs"],
-      "tools": [
-        { "name": "get_active_connectors", "description": "Lista los 100+ conectores activos" },
-        { "name": "run_eval_harness", "description": "Ejecuta el evaluador SWE-bench" }
-      ]
+      "args": ["scripts/mcp-shopfast.mjs"],
+      "capabilities": {
+        "tools": [
+          { "name": "simulate_stripe_webhook", "description": "Dispara evento mock payment_intent.succeeded" },
+          { "name": "query_product_stock", "description": "Consulta inventario disponible de un SKU" },
+          { "name": "run_eval_harness", "description": "Ejecuta el evaluador SWE-bench determinista" }
+        ]
+      }
     }
   }
 }
@@ -247,14 +260,18 @@ Este es el **cortafuegos definitivo**. Si el modelo alucina, sufre amnesia por c
 pre-commit:
   parallel: false
   commands:
+    task-correlatives:
+      run: node scripts/validate-task-ids.mjs
     gitleaks:
       run: npx gitleaks protect --staged --verbose
     dependency-cruiser:
       run: npx depcruise --config .dependency-cruiser.js src
     typecheck:
       run: npm run typecheck
+    test-suite:
+      run: npm test
     eval-harness:
-      run: node evals/harness.mjs --task eval-task-001
+      run: node evals/harness.mjs --task all-tasks
 ```
 
 ---
