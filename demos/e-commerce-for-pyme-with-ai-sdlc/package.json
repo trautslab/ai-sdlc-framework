@@ -14,6 +14,7 @@
     "worktrees:run": "node scripts/orchestrate-worktrees.mjs",
     "demo:live": "node scripts/demo-live-checkout.mjs",
     "dashboard": "node scripts/serve-dashboard.mjs",
+    "simulate:live": "node scripts/simulate-live-run.mjs",
     "eval:task": "node evals/harness.mjs --task all-tasks"
   },
   "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees", "observability"],
