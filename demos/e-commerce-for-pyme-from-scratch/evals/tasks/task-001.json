@@ -1,0 +1,36 @@
+{
+  "id": "task-001",
+  "name": "Verificación Integral de Arquitectura, Tipado y Tests del MVP Core de ShopFast",
+  "checks": [
+    {
+      "id": "check-architecture-docs",
+      "description": "La matriz de trazabilidad docs/INDEX.md y C4 deben existir",
+      "type": "file_exists",
+      "path": "docs/INDEX.md"
+    },
+    {
+      "id": "check-use-case-bdd",
+      "description": "El caso de uso formal con BDD Gherkin docs/use-cases/UC-003-checkout-stripe.md debe existir",
+      "type": "file_exists",
+      "path": "docs/use-cases/UC-003-checkout-stripe.md"
+    },
+    {
+      "id": "check-diagram-sequence",
+      "description": "El diagrama de secuencia docs/diagrams/sequences/SEQ-001-checkout-stripe.md debe existir",
+      "type": "file_exists",
+      "path": "docs/diagrams/sequences/SEQ-001-checkout-stripe.md"
+    },
+    {
+      "id": "check-runnable-unit-tests",
+      "description": "Ejecutar la suite de tests unitarios de Orders, Catalog y Stripe con aserciones reales",
+      "type": "command",
+      "command": "node --test src/**/*.test.mjs"
+    },
+    {
+      "id": "check-live-demo-execution",
+      "description": "Ejecutar la simulación interactiva de checkout en vivo (scripts/demo-live-checkout.mjs)",
+      "type": "command",
+      "command": "node scripts/demo-live-checkout.mjs"
+    }
+  ]
+}

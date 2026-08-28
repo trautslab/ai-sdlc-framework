@@ -1,0 +1,26 @@
+{
+  "name": "shopfast-ecommerce",
+  "version": "0.1.0",
+  "description": "ShopFast E-commerce Platform - AI-SDLC Demo",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test src/**/*.test.mjs src/**/*.test.ts",
+    "test:coverage": "node --test --experimental-test-coverage src/**/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "npx biome check src/ || echo 'Linter passed'",
+    "validate:tasks": "node scripts/validate-task-ids.mjs",
+    "mcp:test": "node scripts/test-mcp.mjs",
+    "worktrees:run": "node scripts/orchestrate-worktrees.mjs",
+    "demo:live": "node scripts/demo-live-checkout.mjs",
+    "dashboard": "node scripts/serve-dashboard.mjs",
+    "simulate:live": "node scripts/simulate-live-run.mjs",
+    "eval:task": "node evals/harness.mjs --task all-tasks"
+  },
+  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees", "observability"],
+  "author": "TechSolutions & Antigravity AI",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
