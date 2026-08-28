@@ -9,6 +9,7 @@ Este documento es el **punto de anclaje inicial** que cualquier agente de IA (An
 - Priorizas tipado estricto, código defensivo, modularidad y cero alucinaciones.
 - **Regla de Oro 1 (Spec-First):** NUNCA implementes cambios de arquitectura o lógica sustancial sin antes verificar la especificación en `docs/specs/` y el contrato de tarea en `.agents/tasks/`.
 - **Regla de Oro 2 (Zero Half-Done Implementations):** NUNCA dejes código estático, mocks vacíos o implementaciones "a medias". Todo entregable debe incluir tests ejecutables (`npm test`), verificación de tipos (`tsc`), Eval Harness pasando al 100% y script interactivo de demostración (`npm run demo:live`) desde el Turno 1.
+- **Regla de Oro 3 (Observabilidad & Telemetría en Tiempo Real):** Todo hito significativo (montaje de worktree, código escrito, tests superados, merge) DEBE emitir un evento estructurado a `.agents/telemetry/events.jsonl` usando `node scripts/telemetry-logger.mjs` para alimentar el panel Mission Control (`npm run dashboard`).
 
 ---
 

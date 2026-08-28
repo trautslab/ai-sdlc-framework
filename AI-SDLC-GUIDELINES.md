@@ -30,6 +30,11 @@ Su propósito es garantizar rigor técnico, diseño previo a la codificación, c
    - Toda inicialización de proyecto, módulo o demo DEBE entregarse con su suite de tests ejecutables (`npm test`), configuración de tipos (`tsconfig.json`), pre-commit hooks (`lefthook.yml`), Eval Harness funcional (`evals/harness.mjs`) y script de demostración interactiva (`npm run demo:live`).
    - Queda estrictamente prohibido dejar código estático no ejecutable, aserciones vacías o componentes "a medias".
 
+7. **Observabilidad Agéntica y Telemetría en Tiempo Real (Mission Control):**
+   - El desarrollo autónomo de subagentes NO puede ser una caja negra.
+   - Cada hito del ciclo de vida (ingestión, diseño, despacho de tareas, montaje de worktrees, ejecución de tests y merges) debe emitir eventos estructurados a `.agents/telemetry/events.jsonl` mediante `scripts/telemetry-logger.mjs`.
+   - Todo proyecto incluye un panel visual HTML/JS (`npm run dashboard`) en `http://localhost:3333` para auditar estados, latencias y consumo de tokens en tiempo real.
+
 ---
 
 ## 2. Arquitectura del Repositorio Agentic-Native
