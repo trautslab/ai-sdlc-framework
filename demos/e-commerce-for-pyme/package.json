@@ -10,10 +10,12 @@
     "typecheck": "tsc --noEmit",
     "lint": "npx biome check src/ || echo 'Linter passed'",
     "validate:tasks": "node scripts/validate-task-ids.mjs",
+    "mcp:test": "node scripts/test-mcp.mjs",
+    "worktrees:run": "node scripts/orchestrate-worktrees.mjs",
     "demo:live": "node scripts/demo-live-checkout.mjs",
     "eval:task": "node evals/harness.mjs --task all-tasks"
   },
-  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe"],
+  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees"],
   "author": "TechSolutions & Antigravity AI",
   "license": "MIT",
   "devDependencies": {
