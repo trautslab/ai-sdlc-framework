@@ -13,9 +13,10 @@
     "mcp:test": "node scripts/test-mcp.mjs",
     "worktrees:run": "node scripts/orchestrate-worktrees.mjs",
     "demo:live": "node scripts/demo-live-checkout.mjs",
+    "dashboard": "node scripts/serve-dashboard.mjs",
     "eval:task": "node evals/harness.mjs --task all-tasks"
   },
-  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees"],
+  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees", "observability"],
   "author": "TechSolutions & Antigravity AI",
   "license": "MIT",
   "devDependencies": {
