@@ -312,3 +312,5 @@ $$
 [^12]: **Patil, S. G., Zhang, T., Wang, X., & Gonzalez, J. E. (2023).** *Gorilla: Large Language Model Connected with Massive APIs.* arXiv preprint [arXiv:2305.15334](https://arxiv.org/abs/2305.15334). *(UC Berkeley)*.
 [^13]: **Zheng, L., Yin, L., Xie, Z., et al. (2024).** *SGLang: Efficient Execution of Structured Language Model Programs.* arXiv preprint [arXiv:2312.07104](https://arxiv.org/abs/2312.07104). *(UC Berkeley & Stanford)*.
 [^14]: **Wu, Q., Bansal, G., Zhang, J., et al. (2023).** *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.* arXiv preprint [arXiv:2308.08155](https://arxiv.org/abs/2308.08155). *(Microsoft Research)*.
+[^15]: **Karpathy, A. (2026).** *Auto-Research: Autonomous Swarms for Iterative Hypothesis Testing & Model Optimization.* [GitHub](https://github.com/karpathy/autoresearch).
+[^16]: **Cotra, A. (2026).** *Six Milestones for AI Automation: From Adequacy to Supremacy.* Model Evaluation and Threat Research (METR). *(Ver análisis completo en [docs/research/2026-05-28-RSI-RECURSIVE-SELF-IMPROVEMENT-AND-AI-SDLC.md](../research/2026-05-28-RSI-RECURSIVE-SELF-IMPROVEMENT-AND-AI-SDLC.md))*.
