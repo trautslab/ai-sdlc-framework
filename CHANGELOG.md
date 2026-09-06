@@ -10,6 +10,27 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.5.0] - 2026-09-05
+
+### 🧹 Refactored (Desduplicación Canónica & Arquitectura Híbrida Limpia)
+- **Eliminación de Redundancia en Raíz:** Eliminada la carpeta duplicada `scripts/` de la raíz del framework; el `package.json` de la raíz ahora enruta directamente a la única fuente canónica en `templates/scripts/`.
+- **Symlink Canónico `.agents`:** La carpeta `.agents/` en la raíz se convirtió en un enlace simbólico canónico a `templates/.agents`, garantizando que cualquier agente o CLI que opere en la raíz lea y escriba directamente en la plantilla maestra con **cero desincronización y cero duplicación en disco**.
+
+### 🏆 Added (Consolidación de Demo Única Oficial)
+- **Creación de `demos/shopfast-ecommerce-ai-sdlc/`:** Demo única, autosuficiente y canónica que reemplaza y unifica las 3 demos anteriores (`e-commerce-for-pyme`, `e-commerce-for-pyme-from-scratch`, `e-commerce-for-pyme-with-ai-sdlc`), incorporando:
+  - Requerimientos originales en PDF (`Caso-Práctico-Documento-de-Alcance.pdf`).
+  - Todas las especificaciones de la 3ra Capa de Negocio (`UC-001`, `NET-001`, `CMP-001`, `ROB-001`, `GANTT-001`).
+  - Toda la infraestructura Multi-Cloud (`DEP-001`, `SEC-NET-001`, `ENV-MATRIX`, `FINOPS-001`).
+  - Implementación TypeScript funcional con 16 tests pasando (`npm test`) y 7/7 Quality Gates en pre-commit.
+  - Servidor de telemetría en tiempo real (`observability/` y SSE streaming).
+
+### ⏱️ Added (Cronograma Dinámico Humano-IA & Protocolo de Rollback)
+- **Diagrama de Gantt Humano-IA (`GANTT-001`):** [`templates/docs/diagrams/gantt/GANTT-001-template.md`](templates/docs/diagrams/gantt/GANTT-001-template.md) con desglose de responsabilidades RACI entre Agente IA, Tech Lead y Product Owner.
+- **Protocolo de Auditoría y Rollback Ante Alucinaciones:** Guía técnica para inspeccionar `events.jsonl`, aislar o descartar worktrees corruptos y aplicar `git revert` atómico con inyección de stack trace en el prompt de Reflexion.
+- **Auto-Apertura de Navegador en Observabilidad:** Actualizado `templates/scripts/serve-dashboard.mjs` para lanzar automáticamente el navegador web en `http://localhost:3333` al iniciar el dashboard.
+
+---
+
 ## [1.4.0] - 2026-09-05
 
 ### ☁️ Added (Topología de Despliegue Multi-Cloud & Gobernanza de Ambientes)

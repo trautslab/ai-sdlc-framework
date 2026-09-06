@@ -60,7 +60,7 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 - [`ERD-001`](diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación de PostgreSQL.
 
 ### 📅 Roadmap y Planificación Humano-IA (`docs/diagrams/gantt/`)
-- [`GANTT-001`](diagrams/gantt/GANTT-001-template.md) — Cronograma interactivo (PO vs Tech Lead vs Agente IA) y protocolo de auditoría/rollback.
+- [`GANTT-001`](diagrams/gantt/GANTT-001-shopfast.md) — Cronograma interactivo (PO vs Tech Lead vs Agente IA) y protocolo de auditoría/rollback.
 
 ---
 

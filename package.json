@@ -1,21 +1,23 @@
 {
   "name": "ai-sdlc-framework",
-  "version": "1.3.0",
-  "description": "AI-SDLC Starter Kit & Agentic-Native Framework with 3-Layer Governance & RSI",
+  "version": "1.5.0",
+  "description": "AI-SDLC Starter Kit & Agentic-Native Framework with 3-Layer Governance, Multi-Cloud Deployment & RSI",
   "type": "module",
   "scripts": {
-    "dashboard": "node templates/scripts/serve-dashboard.mjs",
-    "precommit:audit": "node scripts/pre-commit-guard.mjs",
-    "traceability:sync": "node scripts/rsi/micro-swebench.mjs",
-    "rsi:suite": "node scripts/rsi/run-rsi-suite.mjs --pattern all",
-    "rsi:perf": "node scripts/rsi/run-rsi-suite.mjs --pattern perf",
-    "rsi:adversarial": "node scripts/rsi/run-rsi-suite.mjs --pattern adversarial",
-    "rsi:drift": "node scripts/rsi/run-rsi-suite.mjs --pattern drift",
-    "rsi:frugal": "node scripts/rsi/run-rsi-suite.mjs --pattern frugal",
-    "rsi:swebench": "node scripts/rsi/run-rsi-suite.mjs --pattern swebench",
-    "rsi:adr": "node scripts/rsi/run-rsi-suite.mjs --pattern adr"
+    "dashboard": "node templates/scripts/serve-dashboard.mjs --open",
+    "precommit:audit": "node templates/scripts/pre-commit-guard.mjs",
+    "rsi:suite": "node templates/scripts/rsi/run-rsi-suite.mjs --pattern all",
+    "rsi:perf": "node templates/scripts/rsi/auto-perf-loop.mjs",
+    "rsi:adversarial": "node templates/scripts/rsi/adversarial-fuzzer.mjs",
+    "rsi:drift": "node templates/scripts/rsi/arch-drift-guard.mjs",
+    "rsi:frugal": "node templates/scripts/rsi/frugal-compactor.mjs",
+    "rsi:swebench": "node templates/scripts/rsi/micro-swebench.mjs",
+    "rsi:adr": "node templates/scripts/rsi/living-adr-sync.mjs",
+    "demo:test": "cd demos/shopfast-ecommerce-ai-sdlc && npm test",
+    "demo:live": "cd demos/shopfast-ecommerce-ai-sdlc && npm run demo:live",
+    "simulate:live": "cd demos/shopfast-ecommerce-ai-sdlc && npm run simulate:live"
   },
-  "keywords": ["ai-sdlc", "rsi", "agentic-native", "dual-rail", "swe-bench", "metr", "evals"],
+  "keywords": ["ai-sdlc", "rsi", "agentic-native", "dual-rail", "swe-bench", "metr", "evals", "multi-cloud", "finops"],
   "author": "TraustLab & Antigravity AI",
   "license": "MIT"
 }

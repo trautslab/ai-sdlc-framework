@@ -35,6 +35,7 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 - [`templates/docs/diagrams/activities/ACT-001-template.md`](templates/docs/diagrams/activities/ACT-001-template.md) — Diagrama de Actividad / Flujo lógico Mermaid.
 - [`templates/docs/diagrams/state-machines/STM-001-template.md`](templates/docs/diagrams/state-machines/STM-001-template.md) — Máquina de Estados de Entidades Mermaid.
 - [`templates/docs/diagrams/entity-relationship/ERD-001-template.md`](templates/docs/diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación BD Mermaid.
+- [`templates/docs/diagrams/gantt/GANTT-001-template.md`](templates/docs/diagrams/gantt/GANTT-001-template.md) — Cronograma Dinámico Humano-IA, RACI y Protocolo de Rollback/Post-Mortem.
 - [`templates/docs/adr/ADR-0001-template.md`](templates/docs/adr/ADR-0001-template.md) — Registro de Decisiones de Arquitectura (ADR).
 - [`templates/docs/specs/RFC-001-template.md`](templates/docs/specs/RFC-001-template.md) — Especificación técnica RFC.
 
@@ -43,6 +44,35 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 - [`templates/HANDOFF.md`](templates/HANDOFF.md) — Snapshot vivo de estado y continuidad entre sesiones.
 - [`templates/CHANGELOG.md`](templates/CHANGELOG.md) — Plantilla de Changelog para proyectos derivados.
 - [`templates/CONTRIBUTING.md`](templates/CONTRIBUTING.md) — Convenciones Git, Commits y Quality Gates.
+
+---
+
+## 🏆 Proyecto de Referencia Definitivo: ShopFast E-Commerce (`demos/shopfast-ecommerce-ai-sdlc`)
+
+El repositorio incluye un proyecto de referencia **100% completo, ejecutable y auditado**, generado a partir de la especificación real en PDF ([`Caso-Práctico-Documento-de-Alcance.pdf`](demos/shopfast-ecommerce-ai-sdlc/Caso-Práctico-Documento-de-Alcance.pdf)):
+
+- **Stack**: TypeScript estricto, Node.js, Vitest, PostgreSQL, Redis, Stripe Checkout SDK, CourierFast Shipping API.
+- **Trazabilidad 3-Capas**: Requerimientos $\rightarrow$ Casos de Uso formales (`UC-001` a `UC-003`) $\rightarrow$ Tareas (`TASK-001` a `TASK-007`) $\rightarrow$ Diagramas Mermaid (`C4`, `NET-001`, `CMP-001`, `ROB-001`, `SEQ-001`, `ACT-001`, `STM-001`, `ERD-001`, `DEP-001`, `SEC-NET-001`, `GANTT-001`).
+- **RSI (Recursive Self-Improvement)**: 6 scripts autónomos de auto-fuzzing, auto-perf, compactación de contexto, sync de ADRs y micro-SWE-bench.
+- **Mission Control**: Dashboard DevTools visual con apertura automática en navegador (`http://localhost:3333`).
+
+### 🚀 Comandos Rápidos del Framework:
+
+```bash
+# 1. Ejecutar la suite completa de tests de la demo ShopFast
+npm run demo:test
+
+# 2. Correr la auditoría de los 7 Quality Gates Pre-Commit
+npm run precommit:audit
+
+# 3. Ejecutar los 6 bucles de Recursive Self-Improvement (RSI)
+npm run rsi:suite
+
+# 4. Iniciar el Mission Control con apertura automática del navegador
+npm run demo:live
+# O simular un ciclo agéntico en vivo con telemetría en tiempo real:
+npm run simulate:live
+```
 
 ---
 

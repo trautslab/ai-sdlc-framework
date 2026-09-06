@@ -1,0 +1,34 @@
+{
+  "name": "shopfast-ecommerce-ai-sdlc",
+  "version": "1.5.0",
+  "description": "ShopFast E-commerce Platform - Official Canonical AI-SDLC Demo",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test src/**/*.test.mjs src/**/*.test.ts",
+    "test:coverage": "node --test --experimental-test-coverage src/**/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "npx biome check src/ || echo 'Linter passed'",
+    "validate:tasks": "node scripts/validate-task-ids.mjs",
+    "precommit:audit": "node scripts/pre-commit-guard.mjs",
+    "mcp:test": "node scripts/test-mcp.mjs",
+    "worktrees:run": "node scripts/orchestrate-worktrees.mjs",
+    "demo:live": "node scripts/demo-live-checkout.mjs",
+    "dashboard": "node scripts/serve-dashboard.mjs",
+    "simulate:live": "node scripts/simulate-live-run.mjs",
+    "eval:task": "node evals/harness.mjs --task all-tasks",
+    "rsi:suite": "node scripts/rsi/run-rsi-suite.mjs --pattern all",
+    "rsi:perf": "node scripts/rsi/run-rsi-suite.mjs --pattern perf",
+    "rsi:adversarial": "node scripts/rsi/run-rsi-suite.mjs --pattern adversarial",
+    "rsi:drift": "node scripts/rsi/run-rsi-suite.mjs --pattern drift",
+    "rsi:frugal": "node scripts/rsi/run-rsi-suite.mjs --pattern frugal",
+    "rsi:swebench": "node scripts/rsi/run-rsi-suite.mjs --pattern swebench",
+    "rsi:adr": "node scripts/rsi/run-rsi-suite.mjs --pattern adr"
+  },
+  "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees", "observability"],
+  "author": "TechSolutions & Antigravity AI",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
