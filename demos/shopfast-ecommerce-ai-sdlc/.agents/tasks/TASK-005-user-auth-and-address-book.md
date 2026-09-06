@@ -1,6 +1,7 @@
 # [TASK-005] Módulo de Autenticación, Perfil & Libreta de Direcciones
 
 **ID:** `TASK-005` | **Módulo:** `src/modules/auth/` | **Prioridad:** HIGH  
+**Caso de Uso Asociado:** [`docs/use-cases/UC-005-autenticacion-libreta-direcciones.md`](../../docs/use-cases/UC-005-autenticacion-libreta-direcciones.md)  
 **Branch Aislado:** `feat/task-005-user-auth`  
 
 ## 🎯 1. Objetivo

@@ -1,6 +1,7 @@
 # [TASK-006] Módulo de Opiniones, Calificaciones & Moderación
 
 **ID:** `TASK-006` | **Módulo:** `src/modules/reviews/` | **Prioridad:** LOW  
+**Caso de Uso Asociado:** [`docs/use-cases/UC-006-opiniones-compradores-verificados.md`](../../docs/use-cases/UC-006-opiniones-compradores-verificados.md)  
 **Branch Aislado:** `feat/task-006-verified-reviews`  
 
 ## 🎯 1. Objetivo

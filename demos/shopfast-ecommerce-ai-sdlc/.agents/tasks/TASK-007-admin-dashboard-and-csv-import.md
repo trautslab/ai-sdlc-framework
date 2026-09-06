@@ -1,6 +1,7 @@
 # [TASK-007] Panel de Administración, Importación Masiva CSV & Métricas
 
 **ID:** `TASK-007` | **Módulo:** `src/modules/admin/` | **Prioridad:** HIGH  
+**Caso de Uso Asociado:** [`docs/use-cases/UC-007-admin-dashboard-catalogo-csv.md`](../../docs/use-cases/UC-007-admin-dashboard-catalogo-csv.md)  
 **Branch Aislado:** `feat/task-007-admin-dashboard`  
 
 ## 🎯 1. Objetivo

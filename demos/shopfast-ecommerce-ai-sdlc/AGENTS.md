@@ -18,6 +18,7 @@ Este documento es el **punto de anclaje inicial** que cualquier agente de IA (An
 4. **Cero Consultas N+1 en Catálogo:** Las búsquedas de 2,500 productos deben responder en `< 1.0s` utilizando caché de Redis indexada por categoría/SKU.
 5. **Zero Half-Done Policy:** Toda entrega debe ejecutarse en vivo (`npm test`, `npm run demo:live`, `npm run eval:task`) con 100% de aserciones verdes desde la primera iteración.
 6. **Observabilidad & Telemetría en Tiempo Real:** Registrar cada hito agéntico en `.agents/telemetry/events.jsonl` usando `node scripts/telemetry-logger.mjs` para alimentar el panel Mission Control (`npm run dashboard`).
+7. **Cobertura Exhaustiva de Alcance (Anti-Sesgo de Anexos):** Auditar los 9 módulos de la Sección 3 del PDF de alcance. Queda prohibido ignorar módulos o tomar solo los ejemplos del Anexo A. Todo módulo debe tener Caso de Uso (`UC-XXX`), Tarea (`TASK-XXX`) y Tests verdes.
 
 ---
 

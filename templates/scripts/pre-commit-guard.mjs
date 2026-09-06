@@ -116,7 +116,31 @@ runGate(1, 'Invariantes de Identificadores Correlativos (Anti-Alucinación)', ()
     }
   }
 
-  return { success: true, detail: `${totalAudited} artefactos formales con IDs unívocos validados (0 colisiones)` };
+  // Validar trazabilidad estricta y prohibición de tareas huérfanas (INV-SCOPE-001)
+  function auditTaskTraceability(tasksDir, ucsDir) {
+    if (!existsSync(tasksDir) || !existsSync(ucsDir)) return 0;
+    const taskFiles = readdirSync(tasksDir).filter(f => f.startsWith('TASK-') && f.endsWith('.md') && !f.includes('TEMPLATE'));
+    const ucFiles = readdirSync(ucsDir).filter(f => f.startsWith('UC-') && f.endsWith('.md'));
+    const existingUcIds = new Set(ucFiles.map(f => f.match(/^UC-\d{3,4}/)?.[0]).filter(Boolean));
+
+    for (const tf of taskFiles) {
+      const content = readFileSync(join(tasksDir, tf), 'utf-8');
+      const ucMatch = content.match(/UC-\d{3,4}/);
+      if (!ucMatch) {
+        throw new Error(`[INV-SCOPE-001] Tarea huérfana detectada: ${tf} no declara ningún Caso de Uso (UC-XXX) asociado.`);
+      }
+      const linkedUc = ucMatch[0];
+      if (!existingUcIds.has(linkedUc)) {
+        throw new Error(`[INV-SCOPE-001] Caso de Uso inexistente: ${linkedUc} referenciado en ${tf} no existe en ${ucsDir}.`);
+      }
+    }
+    return taskFiles.length;
+  }
+
+  const tasksVerified = auditTaskTraceability(resolve(process.cwd(), '.agents', 'tasks'), resolve(process.cwd(), 'docs', 'use-cases')) +
+    auditTaskTraceability(resolve(process.cwd(), 'demos', 'shopfast-ecommerce-ai-sdlc', '.agents', 'tasks'), resolve(process.cwd(), 'demos', 'shopfast-ecommerce-ai-sdlc', 'docs', 'use-cases'));
+
+  return { success: true, detail: `${totalAudited} artefactos validados (0 colisiones) | ${tasksVerified} tareas con trazabilidad 100% a UC-XXX` };
 });
 
 // 2. Gate: Clean Architecture & Drift Check

@@ -10,6 +10,25 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.6.0] - 2026-09-06
+
+### 🛡️ Added (Invariante Anti-Sesgo de Anexos & Guardián de Trazabilidad Exhaustiva)
+- **Invariante 6 (`INV-SCOPE-001`) en `.agents/rules/invariants.md`:** Regla no negociable que prohíbe explícitamente a cualquier LLM o desarrollador deducir el alcance a partir de secciones de "Ejemplos" o "Anexos". Obliga al escaneo exhaustivo de la sección de Alcance Funcional (§ 3.1 a § 3.N) con paridad 1:1 hacia Casos de Uso formales (`UC-XXX`).
+- **Regla de Oro 4 en `AGENTS.md`:** Protocolo agéntico para la ingestión exhaustiva de PRDs/PDFs y prohibición estricta de tareas agénticas (`TASK-XXX`) o código en `src/` huérfanos de Caso de Uso formal.
+- **Riel Duro en `pre-commit-guard.mjs` (Gate 1/7):** Validación determinista que escanea todos los contratos en `.agents/tasks/` y verifica que cada tarea referencie un `UC-XXX` existente en `docs/use-cases/`. Si se detectan tareas huérfanas, el commit se aborta con `exit code 1`.
+
+### 🎯 Added (Cobertura 100% del Alcance Real: 9 Casos de Uso Canónicos)
+- **`UC-004`:** [`Cotización de Fletes y Despacho con CourierFast API`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-004-cotizacion-envio-courierfast.md) (§ 3.7 del PDF).
+- **`UC-005`:** [`Autenticación, Gestión de Sesiones y Libreta de Direcciones`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-005-autenticacion-libreta-direcciones.md) (§ 3.2 del PDF, límite máx 5 direcciones).
+- **`UC-006`:** [`Calificaciones y Reseñas de Compradores Verificados`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-006-opiniones-compradores-verificados.md) (§ 3.8 del PDF, 1 reseña por comprador verificado).
+- **`UC-007`:** [`Panel de Administración, Carga Masiva CSV y Alertas de Stock`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-007-admin-dashboard-catalogo-csv.md) (§ 3.9 del PDF, 2,500 ítems y alerta stock <10).
+- **`UC-008`:** [`Ciclo de Vida de Órdenes, Tracking en Tiempo Real y Cancelación`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-008-ciclo-vida-pedidos-tracking.md) (§ 3.5 del PDF, 6 estados de pedido).
+- **`UC-009`:** [`Pago vía Transferencia Bancaria y Conciliación Manual`](demos/shopfast-ecommerce-ai-sdlc/docs/use-cases/UC-009-transferencia-bancaria-conciliacion.md) (§ 3.6.2 del PDF).
+- **Red de Trazabilidad Completa (`NET-001`):** Grafo Mermaid y matriz actualizados al 100% integrando los 9 Casos de Uso, las 7 tareas agénticas y las 8 suites de tests unitarios e integraciones.
+- **Índice Maestro (`docs/INDEX.md`):** Matriz de trazabilidad expandida reflejando la cobertura total del documento de alcance.
+
+---
+
 ## [1.5.0] - 2026-09-05
 
 ### 🧹 Refactored (Desduplicación Canónica & Arquitectura Híbrida Limpia)

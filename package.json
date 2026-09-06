@@ -1,6 +1,6 @@
 {
   "name": "ai-sdlc-framework",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "AI-SDLC Starter Kit & Agentic-Native Framework with 3-Layer Governance, Multi-Cloud Deployment & RSI",
   "type": "module",
   "scripts": {

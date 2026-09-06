@@ -46,3 +46,18 @@ Estos invariantes son **reglas duras no negociables** para cualquier agente de I
 - **Prohibición Estricta de Duplicación y Reciclaje de IDs:** Queda estrictamente prohibido que un LLM o desarrollador asigne el mismo ID a dos archivos distintos o invente secuencias no correlativas.
 - **Verificación en Pre-Commit:** El guardián determinista `npm run precommit:audit` escanea todo el repositorio y aborta el commit con `exit code 1` si detecta colisiones de IDs intra o inter-categoría.
 
+---
+
+## 6. Cobertura Exhaustiva de Alcance y Anti-Sesgo de Anexos (`INV-SCOPE-001`)
+- **Prohibición del Sesgo de Anexos/Ejemplos (The Appendix Trap):** Queda estrictamente PROHIBIDO que un agente de IA asuma que una sección de "Ejemplos", "Historias de Usuario de Muestra" o "Anexos" al final de un documento de especificación técnica o PDF representa el alcance total del proyecto. Dichas secciones son ilustraciones pedagógicas no exhaustivas.
+- **Mapeo Obligatorio Sección-a-Caso de Uso:** El agente DEBE auditar la sección central de **Alcance Funcional** módulo por módulo (§ 3.1, § 3.2, etc.) y sintetizar como mínimo un Caso de Uso formal (`UC-XXX`) por cada módulo funcional identificado.
+- **Prohibición Estricta de Tareas y Código Huérfano (Anti-Orphan Rule):**
+  - Toda tarea agéntica (`TASK-XXX`) en `.agents/tasks/` DEBE declarar explícitamente en sus metadatos el caso de uso del cual emana (`Caso de Uso: UC-XXX`).
+  - Ningún módulo de código o test en `src/` puede crearse sin un Caso de Uso formal que lo justifique.
+  - El guardián determinista `pre-commit-guard.mjs` verifica que ningún `TASK-XXX` quede huérfano de `UC-XXX`. Si falta el caso de uso en `docs/use-cases/`, el commit es rechazado automáticamente.
+- **Protocolo de Ingestión en 3 Pasos:**
+  1. *Inventario Exhaustivo de Secciones:* Extraer todos los títulos y módulos de la especificación funcional.
+  2. *Matriz de Paridad Funcional:* Generar la tabla de cobertura en `docs/INDEX.md` (Módulo PDF $\rightarrow$ `UC-XXX` $\rightarrow$ `TASK-XXX`).
+  3. *Grafo de Red Completo:* Reflejar todos los casos de uso en el diagrama [`NET-001`](../diagrams/use-case-network/NET-001-template.md) antes de escribir código.
+
+

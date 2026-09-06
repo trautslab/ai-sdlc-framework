@@ -1,6 +1,7 @@
 # [TASK-004] Integración de Logística & Envíos con CourierFast API
 
 **ID:** `TASK-004` | **Módulo:** `src/integrations/shipping/` | **Prioridad:** MEDIUM  
+**Caso de Uso Asociado:** [`docs/use-cases/UC-004-cotizacion-envio-courierfast.md`](../../docs/use-cases/UC-004-cotizacion-envio-courierfast.md)  
 **Branch Aislado:** `feat/task-004-courierfast-shipping`  
 
 ## 🎯 1. Objetivo
