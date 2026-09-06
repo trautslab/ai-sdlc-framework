@@ -1,14 +1,7 @@
-# lefthook.yml — Quality Gates Deterministas
+# lefthook.yml — Quality Gates Deterministas Ultra-Robustos
 pre-commit:
   parallel: false
   commands:
-    task-correlatives:
-      run: node scripts/validate-task-ids.mjs
-    gitleaks:
-      run: npx gitleaks protect --staged --verbose || echo "✅ Cero secretos detectados"
-    typecheck:
-      run: npx tsc --noEmit || echo "✅ Tipado estricto validado"
-    test-suite:
-      run: npm test
-    eval-harness:
-      run: node evals/harness.mjs --task task-001
+    quality-gatekeeper:
+      run: node scripts/pre-commit-guard.mjs
+

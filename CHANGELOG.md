@@ -10,6 +10,35 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.3.0] - 2026-09-05
+
+### 🏢 Added (3ra Capa: Negocio, Product Owners & Funcionales)
+- **Plantilla Exhaustiva de Casos de Uso Formales:** [`templates/docs/use-cases/UC-001-template.md`](templates/docs/use-cases/UC-001-template.md) con desglose estricto de:
+  - Happy Path (Flujo Nominal).
+  - Alternate Paths (Flujos Alternativos).
+  - Edge Cases & Lateral Scenarios (Concurrencia, Timeouts, Circuit Breakers).
+  - Boundary Cases (Umbrales Numéricos y Valores Frontera).
+  - Negative Cases & Error Testing (Inyecciones SQL/NoSQL, Zod Schema Rejection, HTTP 400/409).
+  - Criterios de Aceptación Formales en BDD Gherkin (`Given/When/Then`).
+  - Matriz de Trazabilidad Bidireccional.
+- **Red de Trazabilidad de Casos de Uso (`NET-001`):** [`templates/docs/diagrams/use-case-network/NET-001-template.md`](templates/docs/diagrams/use-case-network/NET-001-template.md) conectando Requerimientos $\rightarrow$ Casos de Uso $\rightarrow$ Tareas Agénticas $\rightarrow$ Worktrees $\rightarrow$ Commits Atómicos.
+- **Diagrama de Componentes e Interfaces (`CMP-001`):** [`templates/docs/diagrams/components/CMP-001-template.md`](templates/docs/diagrams/components/CMP-001-template.md) modelando puertos e interfaces y asignando **ownership por subagente** para prevenir colisiones en ejecuciones paralelas.
+- **Diagrama de Robustez BCE (`ROB-001`):** [`templates/docs/diagrams/robustness/ROB-001-template.md`](templates/docs/diagrams/robustness/ROB-001-template.md) validando el desacoplamiento estricto Frontera (UI/API) $\rightarrow$ Control (Caso de Uso) $\rightarrow$ Entidad (Dominio).
+
+### ⚡ Added (Skills Agénticos & Slash Commands para Antigravity / Claude Code / Codex)
+- **Habilidades Agénticas (`.agents/skills/`):**
+  - `rsi-workflow/SKILL.md`: Protocolo maestro de ciclo cerrado (Ingestión $\rightarrow$ Worktree $\rightarrow$ Riel Duro $\rightarrow$ Merge).
+  - `auto-perf/SKILL.md`: Automatización de optimización de rendimiento.
+  - `adversarial-fuzz/SKILL.md`: Fuzzing y red-teaming de seguridad.
+  - `traceability-sync/SKILL.md`: Sincronización del grafo de dependencias de 3 capas.
+- **Catálogo de Slash Commands:** [`templates/.agents/rules/commands.md`](templates/.agents/rules/commands.md) con comandos rápidos (`/auto-perf`, `/adversarial`, `/drift-check`, `/frugal-compact`, `/swe-eval`, `/adr-sync`, `/traceability-sync`, `/precommit-audit`).
+
+### 🛡️ Added (Nivel 2: Guardián Pre-Commit Ultra-Robusto)
+- **Script Guardián Determinista:** [`scripts/pre-commit-guard.mjs`](scripts/pre-commit-guard.mjs) ejecutando secuencialmente los 7 Quality Gates deterministas (Correlatividad de Tareas, Clean Architecture Drift, Living ADRs, Secret Scanner, TypeScript Typecheck, Test Suite y Eval Harness).
+- **Integración con Lefthook:** [`templates/lefthook.yml`](templates/lefthook.yml) y script `"precommit:audit"` en `package.json`.
+
+---
+
 ## [1.2.0] - 2026-09-05
 
 ### 🧠 Added (Research & State of the Art)
