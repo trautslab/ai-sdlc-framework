@@ -87,6 +87,13 @@ runGate(1, 'Invariantes de Identificadores Correlativos (Anti-Alucinación)', ()
       if (statSync(fullPath).isDirectory()) {
         if (f !== 'node_modules' && f !== '.git' && f !== '.worktrees') scanDir(fullPath);
       } else if (f.endsWith('.md')) {
+        if (/template/i.test(f)) {
+          if (/(?:^|[-_])\d+(?:[-_]|$)/.test(f)) {
+            throw new Error(`[INV-TEMPLATE-001] Violación de neutralidad de plantillas: '${f}' contiene correlativo numérico. Las plantillas deben nombrarse estrictamente *-TEMPLATE.md sin números.`);
+          }
+          // Las plantillas neutras válidas no consumen IDs correlativos
+          continue;
+        }
         const idMatch = f.match(/^(TASK|UC|DEP|SEC|CMP|ROB|NET|ADR|ENV|FIN)-(\d{3,4})/);
         if (idMatch) {
           const id = idMatch[0];
@@ -100,7 +107,9 @@ runGate(1, 'Invariantes de Identificadores Correlativos (Anti-Alucinación)', ()
     }
   }
 
-  // Escanear tanto la raíz como templates y demos
+  // Escanear árbol local y plantillas
+  scanDir(resolve(process.cwd(), 'docs'));
+  scanDir(resolve(process.cwd(), '.agents'));
   scanDir(resolve(process.cwd(), 'templates', 'docs'));
   scanDir(resolve(process.cwd(), 'templates', '.agents'));
 

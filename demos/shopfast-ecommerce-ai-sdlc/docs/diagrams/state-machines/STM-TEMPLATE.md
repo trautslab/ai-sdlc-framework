@@ -1,6 +1,6 @@
-# 🔀 [STM-001] Diagrama de Estados: Ciclo de Vida de la Entidad
+# 🔀 [STM-XXXX] Diagrama de Estados: Ciclo de Vida de la Entidad
 
-**Identificador:** `STM-001`  
+**Identificador:** `STM-XXXX`  
 **Entidad Modelada:** `Order` / `UserSession` / `Invoice`  
 **Propósito:** Definir los estados válidos, eventos desencadenantes y transiciones permitidas.
 

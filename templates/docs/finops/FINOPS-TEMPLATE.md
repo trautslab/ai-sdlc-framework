@@ -1,12 +1,12 @@
-# 💰 [FINOPS-001] Modelo de Costos, Presupuesto y FinOps
+# 💰 [FINOPS-XXXX] Modelo de Costos, Presupuesto y FinOps
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
 | **Identificador:** | `FIN-001` (Formato `FIN-XXXX`, inmutable y secuencial) |
 | **Objetivo:** | Proyección presupuestaria mensual, desglose de costos fijos/variables y optimización de tokenomics |
 | **Audiencia:** | FinOps, Product Owners, CFO, Tech Leads |
-| **Diagrama de Despliegue:** | [`DEP-001`](../diagrams/deployment/DEP-001-template.md) |
-| **Matriz de Ambientes:** | [`ENV-MATRIX`](../environments/ENV-MATRIX-template.md) |
+| **Diagrama de Despliegue:** | [`DEP-XXXX`](../diagrams/deployment/DEP-TEMPLATE.md) |
+| **Matriz de Ambientes:** | [`ENV-MATRIX`](../environments/ENV-MATRIX-TEMPLATE.md) |
 
 ---
 

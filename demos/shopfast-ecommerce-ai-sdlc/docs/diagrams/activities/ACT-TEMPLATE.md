@@ -1,7 +1,7 @@
-# 🔄 [ACT-001] Diagrama de Actividad: Flujo Lógico y Bifurcaciones
+# 🔄 [ACT-XXXX] Diagrama de Actividad: Flujo Lógico y Bifurcaciones
 
-**Identificador:** `ACT-001`  
-**Caso de Uso Asociado:** [`UC-001`](../../use-cases/UC-001-template.md)  
+**Identificador:** `ACT-XXXX`  
+**Caso de Uso Asociado:** [`UC-XXXX`](../../use-cases/UC-TEMPLATE.md)  
 **Propósito:** Modelar el flujo de trabajo de negocio, puntos de decisión y ejecuciones paralelas.
 
 ---

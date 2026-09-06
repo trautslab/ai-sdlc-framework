@@ -1,9 +1,10 @@
 {
   "name": "ai-sdlc-framework",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "AI-SDLC Starter Kit & Agentic-Native Framework with 3-Layer Governance, Multi-Cloud Deployment & RSI",
   "type": "module",
   "scripts": {
+    "test": "npm run precommit:audit && npm run demo:test && npm run rsi:suite",
     "dashboard": "node templates/scripts/serve-dashboard.mjs --open",
     "precommit:audit": "node templates/scripts/pre-commit-guard.mjs",
     "rsi:suite": "node templates/scripts/rsi/run-rsi-suite.mjs --pattern all",

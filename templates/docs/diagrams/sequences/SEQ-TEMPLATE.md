@@ -1,7 +1,7 @@
-# 📊 [SEQ-001] Diagrama de Secuencia: Flujo de Interacción
+# 📊 [SEQ-XXXX] Diagrama de Secuencia: Flujo de Interacción
 
-**Identificador:** `SEQ-001`  
-**Caso de Uso Asociado:** [`UC-001`](../../use-cases/UC-001-template.md)  
+**Identificador:** `SEQ-XXXX`  
+**Caso de Uso Asociado:** [`UC-XXXX`](../../use-cases/UC-TEMPLATE.md)  
 **Dominio:** [Autenticación / Pagos / etc.]  
 
 ---

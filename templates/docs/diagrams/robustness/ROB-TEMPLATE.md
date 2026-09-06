@@ -1,9 +1,9 @@
-# 🛡️ [ROB-001] Diagrama de Robustez (Boundary-Control-Entity)
+# 🛡️ [ROB-XXXX] Diagrama de Robustez (Boundary-Control-Entity)
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `ROB-001` (Formato `ROB-XXXX`, inmutable y secuencial) |
-| **Caso de Uso Vinculado:** | [`UC-001`](../../use-cases/UC-001-template.md) |
+| **Identificador:** | `ROB-XXXX` (Formato `ROB-XXXX`, inmutable y secuencial) |
+| **Caso de Uso Vinculado:** | [`UC-XXXX`](../../use-cases/UC-TEMPLATE.md) |
 | **Módulo:** | [e.g. Carrito de Compras & Cálculo de Envío] |
 | **Estado:** | [APPROVED \| IMPLEMENTED] |
 

@@ -5,8 +5,8 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 ---
 
 ## 🏛️ 1. Arquitectura Global
-- [Modelo C4 (Contexto, Contenedores, Componentes)](architecture/c4-model-template.md)
-- [Decisiones de Arquitectura (ADRs)](adr/ADR-0001-template.md)
+- [Modelo C4 (Contexto, Contenedores, Componentes)](architecture/c4-model-TEMPLATE.md)
+- [Decisiones de Arquitectura (ADRs)](adr/ADR-TEMPLATE.md)
 
 ---
 
@@ -15,56 +15,59 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 - [02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md](https://github.com/trautslab/ai-sdlc-framework/blob/main/docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md) — Gobernanza Inmune a la Saturación/Compactación de Contexto, Tokenomics de Alta Escala y Garantías en Antigravity / Claude Code / Codex / Cursor.
 
 ## ☁️ 1.2. Despliegue, Infraestructura & Gobernanza de Ambientes
-- [`DEP-001` (Diagrama de Despliegue Multi-Cloud Agnóstico)](diagrams/deployment/DEP-001-template.md) — Topología C4/UML: Edge, Ingress, Cómputo, Datos y SaaS (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
-- [`SEC-NET-001` (Topología de Red & Seguridad Zero-Trust)](diagrams/network-topology/SEC-NET-001-template.md) — Segmentación en Subnets (DMZ, App, Data), WAF, NAT, Security Groups y Políticas IAM.
-- [`ENV-MATRIX` (Matriz de 4 Ambientes DEV / QA / UAT / PROD)](environments/ENV-MATRIX-template.md) — Gobernanza de etapas, gestión de secretos en Vaults/KMS y Quality Gates de promoción.
-- [`FINOPS-001` (Modelo FinOps & Presupuesto Cloud)](finops/FINOPS-001-template.md) — Bill of Materials (BOM), costos fijos/variables, tokenomics de IA y comisiones de pasarela.
+- [`DEP-XXXX` (Plantilla de Despliegue Multi-Cloud Agnóstico)](diagrams/deployment/DEP-TEMPLATE.md) — Topología C4/UML: Edge, Ingress, Cómputo, Datos y SaaS (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
+- [`SEC-NET-XXXX` (Plantilla de Topología de Red & Seguridad Zero-Trust)](diagrams/network-topology/SEC-NET-TEMPLATE.md) — Segmentación en Subnets (DMZ, App, Data), WAF, NAT, Security Groups y Políticas IAM.
+- [`ENV-MATRIX` (Plantilla de 4 Ambientes DEV / QA / UAT / PROD)](environments/ENV-MATRIX-TEMPLATE.md) — Gobernanza de etapas, gestión de secretos en Vaults/KMS y Quality Gates de promoción.
+- [`FINOPS-XXXX` (Plantilla de Modelo FinOps & Presupuesto Cloud)](finops/FINOPS-TEMPLATE.md) — Bill of Materials (BOM), costos fijos/variables, tokenomics de IA y comisiones de pasarela.
 
 ---
 
 ## 🎯 2. Matriz de Trazabilidad: Casos de Uso vs Artefactos de Arquitectura
 
+> 💡 **Nota sobre las plantillas:** Los moldes reutilizables se nombran con sufijo `*-TEMPLATE.md` y usan el identificador `XXXX`. Al crear el primer caso de uso real de tu proyecto, clona `UC-TEMPLATE.md` hacia `UC-001-nombre-del-flujo.md` sin sobreescribir la plantilla ni causar colisiones de ID.
+
 | ID Caso de Uso | Título | Dominio | Red Trazabilidad | Secuencia | Robustez | Componentes | Máquina Estados | Estado |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
-| [`UC-001`](use-cases/UC-001-template.md) | Gestión de Carrito y Envío Gratis | Checkout | [`NET-001`](diagrams/use-case-network/NET-001-template.md) | [`SEQ-001`](diagrams/sequences/SEQ-001-template.md) | [`ROB-001`](diagrams/robustness/ROB-001-template.md) | [`CMP-001`](diagrams/components/CMP-001-template.md) | [`STM-001`](diagrams/state-machines/STM-001-template.md) | `VERIFIED 🟢` |
+| [`UC-XXXX`](use-cases/UC-TEMPLATE.md) | [Nombre del Caso de Uso Formal] | Dominio | [`NET-XXXX`](diagrams/use-case-network/NET-TEMPLATE.md) | [`SEQ-XXXX`](diagrams/sequences/SEQ-TEMPLATE.md) | [`ROB-XXXX`](diagrams/robustness/ROB-TEMPLATE.md) | [`CMP-XXXX`](diagrams/components/CMP-TEMPLATE.md) | [`STM-XXXX`](diagrams/state-machines/STM-TEMPLATE.md) | `DRAFT 🟡` |
 
 ---
 
-## 📊 3. Catálogo de Diagramas por Tipo
+## 📊 3. Catálogo de Plantillas por Tipo
 
 ### ☁️ Diagramas de Despliegue Multi-Cloud (`docs/diagrams/deployment/`)
-- [`DEP-001`](diagrams/deployment/DEP-001-template.md) — Topología física/lógica de contenedores, balanceadores y almacenes gestionados.
+- [`DEP-TEMPLATE`](diagrams/deployment/DEP-TEMPLATE.md) — Topología física/lógica de contenedores, balanceadores y almacenes gestionados.
 
 ### 🛡️ Topología de Red y Seguridad (`docs/diagrams/network-topology/`)
-- [`SEC-NET-001`](diagrams/network-topology/SEC-NET-001-template.md) — Arquitectura de red DMZ, subredes privadas aisladas y reglas de firewall.
+- [`SEC-NET-TEMPLATE`](diagrams/network-topology/SEC-NET-TEMPLATE.md) — Arquitectura de red DMZ, subredes privadas aisladas y reglas de firewall.
 
 ### 🕸️ Red de Trazabilidad de Casos de Uso (`docs/diagrams/use-case-network/`)
-- [`NET-001`](diagrams/use-case-network/NET-001-template.md) — Grafo de dependencia: Requerimiento $\rightarrow$ Caso de Uso $\rightarrow$ Tarea Agente $\rightarrow$ Worktree $\rightarrow$ Commit.
+- [`NET-TEMPLATE`](diagrams/use-case-network/NET-TEMPLATE.md) — Grafo de dependencia: Requerimiento $\rightarrow$ Caso de Uso $\rightarrow$ Tarea Agente $\rightarrow$ Worktree $\rightarrow$ Commit.
 
 ### 🧩 Diagramas de Componentes e Interfaces (`docs/diagrams/components/`)
-- [`CMP-001`](diagrams/components/CMP-001-template.md) — Descomposición modular, puertos/interfaces y asignación de ownership por subagente IA.
+- [`CMP-TEMPLATE`](diagrams/components/CMP-TEMPLATE.md) — Descomposición modular, puertos/interfaces y asignación de ownership por subagente IA.
 
 ### 🛡️ Diagramas de Robustez (`docs/diagrams/robustness/`)
-- [`ROB-001`](diagrams/robustness/ROB-001-template.md) — Validación BCE (Frontera $\rightarrow$ Control $\rightarrow$ Entidad) de reglas de negocio y políticas de persistencia.
+- [`ROB-TEMPLATE`](diagrams/robustness/ROB-TEMPLATE.md) — Validación BCE (Frontera $\rightarrow$ Control $\rightarrow$ Entidad) de reglas de negocio y políticas de persistencia.
 
 ### 🔄 Diagramas de Secuencia (`docs/diagrams/sequences/`)
-- [`SEQ-001`](diagrams/sequences/SEQ-001-template.md) — Flujo temporal de creación de orden con verificación de caché y base de datos.
+- [`SEQ-TEMPLATE`](diagrams/sequences/SEQ-TEMPLATE.md) — Flujo temporal con verificación de caché y base de datos.
 
 ### ⚙️ Diagramas de Actividad / Flujos (`docs/diagrams/activities/`)
-- [`ACT-001`](diagrams/activities/ACT-001-template.md) — Lógica de validación, reserva de inventario y rollback.
+- [`ACT-TEMPLATE`](diagrams/activities/ACT-TEMPLATE.md) — Lógica de validación, bifurcaciones y rollback.
 
 ### 🔀 Máquinas de Estados (`docs/diagrams/state-machines/`)
-- [`STM-001`](diagrams/state-machines/STM-001-template.md) — Ciclo de vida y transiciones de la entidad `Order`.
+- [`STM-TEMPLATE`](diagrams/state-machines/STM-TEMPLATE.md) — Ciclo de vida y transiciones de entidades.
 
 ### 💾 Modelo de Datos (`docs/diagrams/entity-relationship/`)
-- [`ERD-001`](diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación de PostgreSQL.
+- [`ERD-TEMPLATE`](diagrams/entity-relationship/ERD-TEMPLATE.md) — Diagrama Entidad-Relación de PostgreSQL.
 
 ### 📅 Roadmap y Planificación Humano-IA (`docs/diagrams/gantt/`)
-- [`GANTT-001`](diagrams/gantt/GANTT-001-template.md) — Cronograma interactivo (PO vs Tech Lead vs Agente IA) y protocolo de auditoría/rollback.
+- [`GANTT-TEMPLATE`](diagrams/gantt/GANTT-TEMPLATE.md) — Cronograma interactivo (PO vs Tech Lead vs Agente IA) y protocolo de auditoría/rollback.
 
 ---
 
 ## 📝 4. Especificaciones Técnicas (RFCs)
-- [`RFC-001`](specs/RFC-001-template.md) — Especificación técnica y requerimientos funcionales.
+- [`RFC-TEMPLATE`](specs/RFC-TEMPLATE.md) — Especificación técnica y requerimientos funcionales.
+
 
 

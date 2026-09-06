@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Captura de ventas de clientes no bancarizados o corporativos sin tarjeta de crédito. |
 | **Requerimiento Origen:** | [`REQ-009`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-003-checkout-stripe-transacting.md`](../../.agents/tasks/TASK-003-checkout-stripe-transacting.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

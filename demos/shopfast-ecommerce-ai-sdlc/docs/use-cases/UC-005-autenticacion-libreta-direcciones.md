@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Registro seguro de compradores, reducción de fricción en recompra y control de hasta 5 direcciones. |
 | **Requerimiento Origen:** | [`REQ-005`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-005-user-auth-and-address-book.md`](../../.agents/tasks/TASK-005-user-auth-and-address-book.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

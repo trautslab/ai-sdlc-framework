@@ -1,12 +1,12 @@
-# 🛡️ [SEC-NET-001] Topología de Red y Arquitectura de Seguridad Zero-Trust
+# 🛡️ [SEC-NET-XXXX] Topología de Red y Arquitectura de Seguridad Zero-Trust
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `SEC-NET-001` (Formato `SEC-XXXX`, inmutable y secuencial) |
+| **Identificador:** | `SEC-NET-XXXX` (Formato `SEC-XXXX`, inmutable y secuencial) |
 | **Dominio de Seguridad:** | Aislamiento de Red, Segmentación en Subnets y Control de Tráfico |
 | **Nivel de Cumplimiento:** | PCI-DSS Level 1 / SOC 2 Type II / ISO 27001 |
-| **Diagrama de Despliegue Vinculado:** | [`DEP-001`](../deployment/DEP-001-template.md) |
-| **Matriz de Ambientes:** | [`ENV-MATRIX`](../../environments/ENV-MATRIX-template.md) |
+| **Diagrama de Despliegue Vinculado:** | [`DEP-XXXX`](../deployment/DEP-TEMPLATE.md) |
+| **Matriz de Ambientes:** | [`ENV-MATRIX`](../../environments/ENV-MATRIX-TEMPLATE.md) |
 
 ---
 

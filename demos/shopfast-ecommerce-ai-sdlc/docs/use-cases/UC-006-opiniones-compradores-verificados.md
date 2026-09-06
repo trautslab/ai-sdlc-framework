@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Generación de prueba social auténtica y prevención de spam o reseñas falsas. |
 | **Requerimiento Origen:** | [`REQ-006`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-006-verified-product-reviews.md`](../../.agents/tasks/TASK-006-verified-product-reviews.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

@@ -1,12 +1,12 @@
-# ⏱️ [GANTT-001] Cronograma Dinámico de Ejecución Humano-IA & Protocolo de Rollback
+# ⏱️ [GANTT-XXXX] Cronograma Dinámico de Ejecución Humano-IA & Protocolo de Rollback
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `GANTT-001` (Formato `GANTT-XXXX`, inmutable y secuencial) |
+| **Identificador:** | `GANTT-XXXX` (Formato `GANTT-XXXX`, inmutable y secuencial) |
 | **Objetivo:** | Mapeo temporal de responsabilidades (Agente IA vs. Tech Lead vs. Product Owner) y auditoría de checkpoints |
 | **Audiencia:** | Tech Leads, Project Managers, Product Owners y Subagentes IA |
 | **Fuente de Eventos:** | Telemetría en tiempo real (`.agents/telemetry/events.jsonl`) |
-| **Red de Trazabilidad:** | [`NET-001`](../use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-XXXX`](../use-case-network/NET-TEMPLATE.md) |
 
 ---
 

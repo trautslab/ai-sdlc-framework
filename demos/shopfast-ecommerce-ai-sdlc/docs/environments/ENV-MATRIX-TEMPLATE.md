@@ -2,11 +2,11 @@
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `ENV-001` (Formato `ENV-XXXX`, inmutable y correlativo) |
+| **Identificador:** | `ENV-XXXX` (Formato `ENV-XXXX`, inmutable y correlativo) |
 | **Ciclo de Ambientes:** | `DEV` $\rightarrow$ `QA` $\rightarrow$ `UAT` $\rightarrow$ `PROD` |
 | **Mecanismo de Secretos:** | AWS Secrets Manager / GCP Secret Manager / Vault / MCP Agent Store |
-| **Diagrama de Despliegue:** | [`DEP-001`](../diagrams/deployment/DEP-001-template.md) |
-| **Topología de Red:** | [`SEC-NET-001`](../diagrams/network-topology/SEC-NET-001-template.md) |
+| **Diagrama de Despliegue:** | [`DEP-XXXX`](../diagrams/deployment/DEP-TEMPLATE.md) |
+| **Topología de Red:** | [`SEC-NET-XXXX`](../diagrams/network-topology/SEC-NET-TEMPLATE.md) |
 
 ---
 

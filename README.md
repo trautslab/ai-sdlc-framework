@@ -19,25 +19,25 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 - [`templates/evals/harness.mjs`](templates/evals/harness.mjs) — Script ejecutor del Eval Harness (Self-Healing Loop).
 
 ### ☁️ Despliegue, Infraestructura & Gobernanza de Ambientes
-- [`templates/docs/diagrams/deployment/DEP-001-template.md`](templates/docs/diagrams/deployment/DEP-001-template.md) — Diagrama de Despliegue Multi-Cloud Agnóstico (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
-- [`templates/docs/diagrams/network-topology/SEC-NET-001-template.md`](templates/docs/diagrams/network-topology/SEC-NET-001-template.md) — Topología de Red, Subnets DMZ, WAF y Seguridad Zero-Trust.
-- [`templates/docs/environments/ENV-MATRIX-template.md`](templates/docs/environments/ENV-MATRIX-template.md) — Matriz de 4 Ambientes (DEV / QA / UAT / PROD) y Gestión de Secretos en Vaults/KMS.
-- [`templates/docs/finops/FINOPS-001-template.md`](templates/docs/finops/FINOPS-001-template.md) — Modelo FinOps, Bill of Materials (BOM), Presupuesto Cloud y Tokenomics.
+- [`templates/docs/diagrams/deployment/DEP-TEMPLATE.md`](templates/docs/diagrams/deployment/DEP-TEMPLATE.md) — Diagrama de Despliegue Multi-Cloud Agnóstico (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
+- [`templates/docs/diagrams/network-topology/SEC-NET-TEMPLATE.md`](templates/docs/diagrams/network-topology/SEC-NET-TEMPLATE.md) — Topología de Red, Subnets DMZ, WAF y Seguridad Zero-Trust.
+- [`templates/docs/environments/ENV-MATRIX-TEMPLATE.md`](templates/docs/environments/ENV-MATRIX-TEMPLATE.md) — Matriz de 4 Ambientes (DEV / QA / UAT / PROD) y Gestión de Secretos en Vaults/KMS.
+- [`templates/docs/finops/FINOPS-TEMPLATE.md`](templates/docs/finops/FINOPS-TEMPLATE.md) — Modelo FinOps, Bill of Materials (BOM), Presupuesto Cloud y Tokenomics.
 
 ### 🏢 Arquitectura, Negocio & Diagramas (3ra Capa)
 - [`templates/docs/INDEX.md`](templates/docs/INDEX.md) — Matriz de trazabilidad y navegación documental.
-- [`templates/docs/use-cases/UC-001-template.md`](templates/docs/use-cases/UC-001-template.md) — Caso de Uso formal exhaustivo (Happy Path, Alternativos, Edge Cases, Boundary, Negativos, BDD Gherkin).
-- [`templates/docs/diagrams/use-case-network/NET-001-template.md`](templates/docs/diagrams/use-case-network/NET-001-template.md) — Red de Trazabilidad: Requerimiento $\rightarrow$ Caso de Uso $\rightarrow$ Tarea $\rightarrow$ Subagente.
-- [`templates/docs/diagrams/components/CMP-001-template.md`](templates/docs/diagrams/components/CMP-001-template.md) — Diagrama de Componentes e Interfaces con Ownership por Subagente.
-- [`templates/docs/diagrams/robustness/ROB-001-template.md`](templates/docs/diagrams/robustness/ROB-001-template.md) — Diagrama de Robustez BCE (Frontera $\rightarrow$ Control $\rightarrow$ Entidad).
-- [`templates/docs/architecture/c4-model-template.md`](templates/docs/architecture/c4-model-template.md) — Arquitectura C4 (Contexto, Contenedores, Componentes).
-- [`templates/docs/diagrams/sequences/SEQ-001-template.md`](templates/docs/diagrams/sequences/SEQ-001-template.md) — Diagrama de Secuencia Mermaid.
-- [`templates/docs/diagrams/activities/ACT-001-template.md`](templates/docs/diagrams/activities/ACT-001-template.md) — Diagrama de Actividad / Flujo lógico Mermaid.
-- [`templates/docs/diagrams/state-machines/STM-001-template.md`](templates/docs/diagrams/state-machines/STM-001-template.md) — Máquina de Estados de Entidades Mermaid.
-- [`templates/docs/diagrams/entity-relationship/ERD-001-template.md`](templates/docs/diagrams/entity-relationship/ERD-001-template.md) — Diagrama Entidad-Relación BD Mermaid.
-- [`templates/docs/diagrams/gantt/GANTT-001-template.md`](templates/docs/diagrams/gantt/GANTT-001-template.md) — Cronograma Dinámico Humano-IA, RACI y Protocolo de Rollback/Post-Mortem.
-- [`templates/docs/adr/ADR-0001-template.md`](templates/docs/adr/ADR-0001-template.md) — Registro de Decisiones de Arquitectura (ADR).
-- [`templates/docs/specs/RFC-001-template.md`](templates/docs/specs/RFC-001-template.md) — Especificación técnica RFC.
+- [`templates/docs/use-cases/UC-TEMPLATE.md`](templates/docs/use-cases/UC-TEMPLATE.md) — Caso de Uso formal exhaustivo (Happy Path, Alternativos, Edge Cases, Boundary, Negativos, BDD Gherkin).
+- [`templates/docs/diagrams/use-case-network/NET-TEMPLATE.md`](templates/docs/diagrams/use-case-network/NET-TEMPLATE.md) — Red de Trazabilidad: Requerimiento $\rightarrow$ Caso de Uso $\rightarrow$ Tarea $\rightarrow$ Subagente.
+- [`templates/docs/diagrams/components/CMP-TEMPLATE.md`](templates/docs/diagrams/components/CMP-TEMPLATE.md) — Diagrama de Componentes e Interfaces con Ownership por Subagente.
+- [`templates/docs/diagrams/robustness/ROB-TEMPLATE.md`](templates/docs/diagrams/robustness/ROB-TEMPLATE.md) — Diagrama de Robustez BCE (Frontera $\rightarrow$ Control $\rightarrow$ Entidad).
+- [`templates/docs/architecture/c4-model-TEMPLATE.md`](templates/docs/architecture/c4-model-TEMPLATE.md) — Arquitectura C4 (Contexto, Contenedores, Componentes).
+- [`templates/docs/diagrams/sequences/SEQ-TEMPLATE.md`](templates/docs/diagrams/sequences/SEQ-TEMPLATE.md) — Diagrama de Secuencia Mermaid.
+- [`templates/docs/diagrams/activities/ACT-TEMPLATE.md`](templates/docs/diagrams/activities/ACT-TEMPLATE.md) — Diagrama de Actividad / Flujo lógico Mermaid.
+- [`templates/docs/diagrams/state-machines/STM-TEMPLATE.md`](templates/docs/diagrams/state-machines/STM-TEMPLATE.md) — Máquina de Estados de Entidades Mermaid.
+- [`templates/docs/diagrams/entity-relationship/ERD-TEMPLATE.md`](templates/docs/diagrams/entity-relationship/ERD-TEMPLATE.md) — Diagrama Entidad-Relación BD Mermaid.
+- [`templates/docs/diagrams/gantt/GANTT-TEMPLATE.md`](templates/docs/diagrams/gantt/GANTT-TEMPLATE.md) — Cronograma Dinámico Humano-IA, RACI y Protocolo de Rollback/Post-Mortem.
+- [`templates/docs/adr/ADR-TEMPLATE.md`](templates/docs/adr/ADR-TEMPLATE.md) — Registro de Decisiones de Arquitectura (ADR).
+- [`templates/docs/specs/RFC-TEMPLATE.md`](templates/docs/specs/RFC-TEMPLATE.md) — Especificación técnica RFC.
 
 ### 📦 Gobernanza, Release & Continuidad
 - [`CHANGELOG.md`](CHANGELOG.md) — Registro formal de versiones y cambios del framework (SemVer + Keep a Changelog).

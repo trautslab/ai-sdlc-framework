@@ -6,7 +6,7 @@
 | **Objetivo:** | Mapeo temporal de responsabilidades (Agente IA vs. Tech Lead vs. Product Owner) y auditoría de checkpoints |
 | **Audiencia:** | Tech Leads, Project Managers, Product Owners y Subagentes IA |
 | **Fuente de Eventos:** | Telemetría en tiempo real (`.agents/telemetry/events.jsonl`) |
-| **Red de Trazabilidad:** | [`NET-001`](../use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../use-case-network/NET-TEMPLATE.md) |
 
 ---
 

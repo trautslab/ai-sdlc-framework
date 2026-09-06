@@ -58,6 +58,19 @@ Estos invariantes son **reglas duras no negociables** para cualquier agente de I
 - **Protocolo de Ingestión en 3 Pasos:**
   1. *Inventario Exhaustivo de Secciones:* Extraer todos los títulos y módulos de la especificación funcional.
   2. *Matriz de Paridad Funcional:* Generar la tabla de cobertura en `docs/INDEX.md` (Módulo PDF $\rightarrow$ `UC-XXX` $\rightarrow$ `TASK-XXX`).
-  3. *Grafo de Red Completo:* Reflejar todos los casos de uso en el diagrama [`NET-001`](../diagrams/use-case-network/NET-001-template.md) antes de escribir código.
+  3. *Grafo de Red Completo:* Reflejar todos los casos de uso en el diagrama [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) antes de escribir código.
 
+---
+
+## 7. Neutralidad de Plantillas y Prevención de Colisiones (`INV-TEMPLATE-001`)
+- **Prohibición de Correlativos Numéricos en Plantillas:** Las plantillas reutilizables ubicadas en `docs/` o subdirectorios de arquitectura DEBEN nombrarse estrictamente con el sufijo `-TEMPLATE.md` (por ejemplo: `UC-TEMPLATE.md`, `SEQ-TEMPLATE.md`, `ADR-TEMPLATE.md`, `ENV-MATRIX-TEMPLATE.md`). Queda TERMINANTEMENTE PROHIBIDO nombrarlas con dígitos o correlativos ficticios (e.g. `UC-001-template.md`, `ADR-0001-template.md`), ya que esto induce a los LLMs a alucinar duplicaciones numéricas (`UC-001` plantilla vs `UC-001` real), omitir el inicio de la secuencia correlativa, o duplicar IDs en cascada dejando huérfanos los análisis previos.
+- **Uso Obligatorio de Placeholders Neutros (`XXXX`):** Dentro del contenido de cualquier plantilla, los identificadores deben declararse como `[PREFIX-XXXX]` o `PREFIX-XXXX` (e.g. `UC-XXXX`, `ADR-XXXX`, `SEQ-XXXX`).
+- **Protocolo de Instanciación de Nuevos Documentos:**
+  1. Al crear un nuevo documento a partir de una plantilla, el agente/desarrollador debe clonar la plantilla hacia un nuevo archivo con el correlativo secuencial siguiente (e.g., el primer caso de uso se guardará en `docs/use-cases/UC-001-nombre-del-caso.md`).
+  2. La plantilla original `*-TEMPLATE.md` DEBE preservarse intacta como molde reusable sin ser sobreescrita ni eliminada.
+  3. En el archivo nuevo instanciado, reemplazar todos los `XXXX` por el número asignado (`001`).
+  4. Ningún archivo con correlativo real puede contener `XXXX`.
+- **Validación Determinista en Pre-Commit:**
+  - El script determinista `pre-commit-guard.mjs` (Gate 1) audita que los archivos que contengan `TEMPLATE` en su nombre no posean números correlativos asignados, y los excluye del conteo de colisiones de IDs reales.
+  - Al mismo tiempo, valida que ningún archivo de producción/especificación real use placeholders `XXXX`.
 

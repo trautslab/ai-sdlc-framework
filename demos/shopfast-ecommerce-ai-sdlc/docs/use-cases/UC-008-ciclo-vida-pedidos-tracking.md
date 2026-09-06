@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Visibilidad completa del estado del pedido, trazabilidad logística y reducción de consultas de soporte. |
 | **Requerimiento Origen:** | [`REQ-008`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-003-checkout-stripe-transacting.md`](../../.agents/tasks/TASK-003-checkout-stripe-transacting.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

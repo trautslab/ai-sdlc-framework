@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Cálculo exacto de costos de flete por ciudad/peso y asignación automática de guías de tracking. |
 | **Requerimiento Origen:** | [`REQ-004`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-004-courierfast-shipping-integration.md`](../../.agents/tasks/TASK-004-courierfast-shipping-integration.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

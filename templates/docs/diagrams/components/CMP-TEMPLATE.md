@@ -1,11 +1,11 @@
-# 🧩 [CMP-001] Diagrama de Componentes e Interfaces
+# 🧩 [CMP-XXXX] Diagrama de Componentes e Interfaces
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `CMP-001` (Formato `CMP-XXXX`, inmutable y correlativo) |
+| **Identificador:** | `CMP-XXXX` (Formato `CMP-XXXX`, inmutable y correlativo) |
 | **Subsistema / Dominio:** | [e.g. Núcleo E-Commerce / Gestión de Catálogo y Carrito] |
-| **Casos de Uso Asociados:** | [`UC-001`](../../use-cases/UC-001-template.md) |
-| **ADR Relacionado:** | [`ADR-0001`](../../adr/ADR-0001-template.md) |
+| **Casos de Uso Asociados:** | [`UC-XXXX`](../../use-cases/UC-TEMPLATE.md) |
+| **ADR Relacionado:** | [`ADR-XXXX`](../../adr/ADR-TEMPLATE.md) |
 | **Subagentes Responsables:** | `subagent-1` (Catálogo), `subagent-2` (Carrito), `subagent-3` (Órdenes) |
 
 ---

@@ -1,8 +1,8 @@
-# 🕸️ [NET-001] Red de Trazabilidad y Dependencias de Casos de Uso
+# 🕸️ [NET-XXXX] Red de Trazabilidad y Dependencias de Casos de Uso
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `NET-001` (Formato `NET-XXXX`, inmutable y secuencial) |
+| **Identificador:** | `NET-XXXX` (Formato `NET-XXXX`, inmutable y secuencial) |
 | **Objetivo del Documento:** | Mapeo de trazabilidad end-to-end desde Requerimientos de Negocio hasta Commits de Subagentes |
 | **Audiencia:** | Tech Leads, Product Owners, Arquitectos y Subagentes IA |
 | **Última Actualización:** | Septiembre 2026 |
@@ -89,7 +89,7 @@ graph LR
 
 | ID Requerimiento | ID Caso de Uso | ID Tarea Agente | Subagente Dueño | Componente Afectado | Suite de Test Determinista | Estado Final |
 | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
-| **REQ-001** | [`UC-001`](../../use-cases/UC-001-busqueda-catalogo.md) | `TASK-001` | `subagent-1` | `src/modules/catalog/` | `catalog.service.test.mjs` | 🟢 VERIFIED |
+| **REQ-001** | [`UC-XXXX`](../../use-cases/UC-001-busqueda-catalogo.md) | `TASK-001` | `subagent-1` | `src/modules/catalog/` | `catalog.service.test.mjs` | 🟢 VERIFIED |
 | **REQ-002** | [`UC-002`](../../use-cases/UC-002-gestion-carrito.md) | `TASK-002` | `subagent-2` | `src/modules/cart/` | `cart.service.test.mjs` | 🟢 VERIFIED |
 | **REQ-003** | [`UC-003`](../../use-cases/UC-003-checkout-stripe.md) | `TASK-003` | `subagent-3` | `src/modules/orders/` | `order.service.test.mjs` | 🟢 VERIFIED |
 | **REQ-004** | [`UC-004`](../../use-cases/UC-004-cotizacion-envio-courierfast.md) | `TASK-004` | `subagent-2` | `src/integrations/shipping/` | `courierfast.adapter.test.mjs` | 🟢 VERIFIED |

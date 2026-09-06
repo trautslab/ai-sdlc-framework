@@ -10,6 +10,23 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.7.0] - 2026-09-06
+
+### 🛡️ Added (Invariante de Neutralidad de Plantillas & Anti-Colisión `INV-TEMPLATE-001`)
+- **Invariante 7 (`INV-TEMPLATE-001`) en `.agents/rules/invariants.md`:** Prohibición terminante de correlativos numéricos en archivos de plantillas (`*-001-template.md` $\rightarrow$ `*-TEMPLATE.md`). Evita que LLMs y agentes de desarrollo alucinen colisiones de identificadores (`UC-001` plantilla vs `UC-001` real), se salten la secuencia correlativa, o dejen huérfanos artefactos generados previamente.
+- **Placeholders Universales Neutros (`XXXX`):** Dentro del contenido de cada plantilla, todos los encabezados y referencias usan identificadores no asignados como `[UC-XXXX]`, `[ADR-XXXX]`, `[SEQ-XXXX]`, garantizando que solo los archivos de producción contengan numeración real (`001`, `002`, etc.).
+- **Riel Duro en `pre-commit-guard.mjs` (Gate 1/7):** Validación determinista que rechaza cualquier plantilla cuyo nombre contenga dígitos o correlativos numéricos, al tiempo que las excluye del mapa de colisiones de producción.
+
+### 🧹 Refactored (Renombrado Canónico de Plantillas)
+- **15 Plantillas Centrales en `templates/docs/`:** Renombradas a `*-TEMPLATE.md` (`UC-TEMPLATE.md`, `ADR-TEMPLATE.md`, `RFC-TEMPLATE.md`, `SEQ-TEMPLATE.md`, `ACT-TEMPLATE.md`, `STM-TEMPLATE.md`, `ERD-TEMPLATE.md`, `CMP-TEMPLATE.md`, `ROB-TEMPLATE.md`, `DEP-TEMPLATE.md`, `SEC-NET-TEMPLATE.md`, `FINOPS-TEMPLATE.md`, `ENV-MATRIX-TEMPLATE.md`, `NET-TEMPLATE.md`, `GANTT-TEMPLATE.md`, `c4-model-TEMPLATE.md`).
+- **Sincronización en Demo Oficial (`demos/shopfast-ecommerce-ai-sdlc/`):** Adopción de la misma convención de plantillas neutrales y actualización de la matriz en `docs/INDEX.md`.
+
+### 🔍 Added (Herramientas de Auditoría & Prompt Maestro de Refactor)
+- **Auditoría Exhaustiva de `vayraia/tickets`:** Análisis forense del commit `0efd45f` guardado en `audit/AUDITORIA_COMMIT_0efd45f_VAYRAIA_TICKETS.md`.
+- **Prompt Maestro Modular:** [`audit/PROMPT_MAESTRO_REFECTOR_VAYRAIA_TICKETS.md`](audit/PROMPT_MAESTRO_REFECTOR_VAYRAIA_TICKETS.md) estructurado en 4 fases desacopladas para ejecutar selectivamente la remediación de plantillas, enriquecimiento de infraestructura Multi-Cloud, inyección del motor agéntico y sincronización de índices.
+
+---
+
 ## [1.6.0] - 2026-09-06
 
 ### 🛡️ Added (Invariante Anti-Sesgo de Anexos & Guardián de Trazabilidad Exhaustiva)

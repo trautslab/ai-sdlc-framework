@@ -1,4 +1,4 @@
-# [RFC-001] Nombre de la Característica / Feature
+# [RFC-XXXX] Nombre de la Característica / Feature
 
 **Estado:** [DRAFT | IN REVIEW | APPROVED | IMPLEMENTED]  
 **Fecha:** AAAA-MM-DD  

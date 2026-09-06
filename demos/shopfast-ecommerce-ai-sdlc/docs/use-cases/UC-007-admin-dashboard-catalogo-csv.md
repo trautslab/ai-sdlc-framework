@@ -9,7 +9,7 @@
 | **Impacto en Negocio:** | Operación masiva del catálogo de 2,500 productos y detección proactiva de quiebres de stock. |
 | **Requerimiento Origen:** | [`REQ-007`](../specs/RFC-001-mvp-core-architecture.md) |
 | **Contrato de Tarea Agente:**| [`.agents/tasks/TASK-007-admin-dashboard-and-csv-import.md`](../../.agents/tasks/TASK-007-admin-dashboard-and-csv-import.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Red de Trazabilidad:** | [`NET-TEMPLATE`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 

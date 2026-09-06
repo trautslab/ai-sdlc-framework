@@ -1,6 +1,6 @@
-# 🗄️ [ERD-001] Diagrama Entidad-Relación: Modelo de Datos
+# 🗄️ [ERD-XXXX] Diagrama Entidad-Relación: Modelo de Datos
 
-**Identificador:** `ERD-001`  
+**Identificador:** `ERD-XXXX`  
 **Motor de Persistencia:** PostgreSQL 16+  
 **Dominio:** [Núcleo de Datos / Facturación / etc.]  
 

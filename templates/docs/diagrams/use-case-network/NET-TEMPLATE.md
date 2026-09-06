@@ -1,8 +1,8 @@
-# 🕸️ [NET-001] Red de Trazabilidad y Dependencias de Casos de Uso
+# 🕸️ [NET-XXXX] Red de Trazabilidad y Dependencias de Casos de Uso
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador:** | `NET-001` (Formato `NET-XXXX`, inmutable y secuencial) |
+| **Identificador:** | `NET-XXXX` (Formato `NET-XXXX`, inmutable y secuencial) |
 | **Objetivo del Documento:** | Mapeo de trazabilidad end-to-end desde Requerimientos de Negocio hasta Commits de Subagentes |
 | **Audiencia:** | Tech Leads, Product Owners, Arquitectos y Subagentes IA |
 | **Última Actualización:** | Septiembre 2026 |
@@ -86,9 +86,9 @@ graph LR
 
 | ID Requerimiento | ID Caso de Uso | ID Tarea Agente | Subagente Dueño | Componente Afectado | Quality Gate Determinista | Estado Final |
 | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
-| **REQ-001** | [`UC-001`](../../use-cases/UC-001-template.md) | `TASK-001` | `subagent-1` | `src/modules/catalog/` | `node --test catalog.test.mjs` | 🟢 VERIFIED |
-| **REQ-002** | [`UC-002`](../../use-cases/UC-001-template.md) | `TASK-002` | `subagent-2` | `src/modules/cart/` | `node --test cart.test.mjs` | 🟢 VERIFIED |
-| **REQ-003** | [`UC-003`](../../use-cases/UC-001-template.md) | `TASK-003` | `subagent-3` | `src/modules/orders/` | `node --test order.test.mjs` | 🟢 VERIFIED |
+| **REQ-001** | [`UC-XXXX`](../../use-cases/UC-TEMPLATE.md) | `TASK-001` | `subagent-1` | `src/modules/catalog/` | `node --test catalog.test.mjs` | 🟢 VERIFIED |
+| **REQ-002** | [`UC-002`](../../use-cases/UC-TEMPLATE.md) | `TASK-002` | `subagent-2` | `src/modules/cart/` | `node --test cart.test.mjs` | 🟢 VERIFIED |
+| **REQ-003** | [`UC-003`](../../use-cases/UC-TEMPLATE.md) | `TASK-003` | `subagent-3` | `src/modules/orders/` | `node --test order.test.mjs` | 🟢 VERIFIED |
 
 ---
 

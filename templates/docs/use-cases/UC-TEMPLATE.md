@@ -1,18 +1,18 @@
-# 🎯 [UC-001] Nombre del Caso de Uso Formal
+# 🎯 [UC-XXXX] Nombre del Caso de Uso Formal
 
 | Campo | Valor / Descripción |
 | :--- | :--- |
-| **Identificador Único:** | `UC-001` (Formato `UC-XXXX`, inmutable y secuencial) |
+| **Identificador Único:** | `UC-XXXX` (Formato `UC-XXXX`, inmutable y secuencial) |
 | **Módulo / Dominio:** | [e.g. Catálogo / Carrito / Órdenes / Pagos] |
 | **Prioridad de Negocio:** | [CRÍTICA (P0) \| ALTA (P1) \| MEDIA (P2) \| BAJA (P3)] |
 | **Estado:** | [DRAFT \| IN REVIEW \| APPROVED \| IMPLEMENTED \| VERIFIED] |
 | **Impacto en Negocio / ROI:** | [e.g. Incremento del 15% en tasa de conversión / Reducción de carritos abandonados] |
-| **Requerimiento Origen:** | [`REQ-001`](../specs/RFC-001-template.md) |
+| **Requerimiento Origen:** | [`REQ-001`](../specs/RFC-TEMPLATE.md) |
 | **Contrato de Tarea Agente:** | [`.agents/tasks/TASK-001.md`](../../.agents/tasks/TASK_TEMPLATE.md) |
-| **Diagrama de Secuencia:** | [`SEQ-001`](../diagrams/sequences/SEQ-001-template.md) |
-| **Diagrama de Robustez:** | [`ROB-001`](../diagrams/robustness/ROB-001-template.md) |
-| **Diagrama de Componentes:** | [`CMP-001`](../diagrams/components/CMP-001-template.md) |
-| **Red de Trazabilidad:** | [`NET-001`](../diagrams/use-case-network/NET-001-template.md) |
+| **Diagrama de Secuencia:** | [`SEQ-XXXX`](../diagrams/sequences/SEQ-TEMPLATE.md) |
+| **Diagrama de Robustez:** | [`ROB-XXXX`](../diagrams/robustness/ROB-TEMPLATE.md) |
+| **Diagrama de Componentes:** | [`CMP-XXXX`](../diagrams/components/CMP-TEMPLATE.md) |
+| **Red de Trazabilidad:** | [`NET-XXXX`](../diagrams/use-case-network/NET-TEMPLATE.md) |
 
 ---
 
@@ -98,7 +98,7 @@
 ## 10. Criterios de Aceptación Formales (BDD Gherkin)
 
 ```gherkin
-Feature: [UC-001] Gestión de Carrito de Compras y Envío Gratis
+Feature: [UC-XXXX] Gestión de Carrito de Compras y Envío Gratis
 
   Scenario: [Happy Path] Agregar producto con stock disponible
     Given un usuario con sesión activa
