@@ -23,6 +23,17 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
   6. *Patrón 6: Cronista y Generador Autónomo de ADRs (`Living Architecture Records`)* — Fundamentado en Michael Nygard (*ADRs*) [^10].
 - **Matriz Comparativa de Doble Riel (*Dual-Rail Matrix*):** Mapeo exhaustivo de capacidades cognitivas del LLM (*Riel Suave*) contra guardianes deterministas (*Riel Duro*) con métricas de aceptación objetivas.
 
+### 🛠️ Added (Executable RSI Scripts & Master CLI Runner)
+- **Implementación de Scripts Ejecutables en `scripts/rsi/` y `templates/scripts/rsi/`:**
+  - `auto-perf-loop.mjs`: Medición de baseline, aislamiento en Git Worktree, benchmark y fast-forward merge condicional ($\Delta p95 \ge 15\%$).
+  - `adversarial-fuzzer.mjs`: Inyección de vectores de ataque sintéticos (SQLi, prototype pollution, bajo desbordamiento, concurrencia) con validación estricta Zod.
+  - `arch-drift-guard.mjs`: Linter AST de Clean Architecture y generador de prompts de Reflexion verbal.
+  - `frugal-compactor.mjs`: Auditoría de tokens, compactación semántica y suite de evals sintéticos ($100\%$ Pass@1).
+  - `micro-swebench.mjs`: Transpilador de BDD Gherkin a arnés de evaluación Red-to-Green determinista.
+  - `living-adr-sync.mjs`: Auditor estático de consistencia de enlaces, esquemas y correlatividad de ADRs.
+  - `run-rsi-suite.mjs`: Orquestador CLI unificado para ejecución interactiva o en lote con scoreboard y telemetría SSE.
+- **Integración de Comandos NPM (`package.json`):** Scripts `npm run rsi:suite`, `npm run rsi:perf`, `npm run rsi:adversarial`, `npm run rsi:drift`, `npm run rsi:frugal`, `npm run rsi:swebench`, `npm run rsi:adr`.
+
 ### 📚 Changed
 - **Gobernanza de Contexto & Tokenomics:** Enlace de citas académicas `[^15]` (*Karpathy Auto-Research*) y `[^16]` (*Cotra METR*) en [`docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md`](docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md).
 

@@ -15,7 +15,14 @@
     "demo:live": "node scripts/demo-live-checkout.mjs",
     "dashboard": "node scripts/serve-dashboard.mjs",
     "simulate:live": "node scripts/simulate-live-run.mjs",
-    "eval:task": "node evals/harness.mjs --task all-tasks"
+    "eval:task": "node evals/harness.mjs --task all-tasks",
+    "rsi:suite": "node scripts/rsi/run-rsi-suite.mjs --pattern all",
+    "rsi:perf": "node scripts/rsi/run-rsi-suite.mjs --pattern perf",
+    "rsi:adversarial": "node scripts/rsi/run-rsi-suite.mjs --pattern adversarial",
+    "rsi:drift": "node scripts/rsi/run-rsi-suite.mjs --pattern drift",
+    "rsi:frugal": "node scripts/rsi/run-rsi-suite.mjs --pattern frugal",
+    "rsi:swebench": "node scripts/rsi/run-rsi-suite.mjs --pattern swebench",
+    "rsi:adr": "node scripts/rsi/run-rsi-suite.mjs --pattern adr"
   },
   "keywords": ["ecommerce", "ai-sdlc", "antigravity", "shopfast", "stripe", "mcp", "worktrees", "observability"],
   "author": "TechSolutions & Antigravity AI",

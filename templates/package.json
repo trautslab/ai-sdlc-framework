@@ -12,7 +12,14 @@
     "validate:tasks": "node scripts/validate-task-ids.mjs",
     "dashboard": "node scripts/serve-dashboard.mjs",
     "demo:live": "node scripts/demo-live.mjs",
-    "eval:task": "node evals/harness.mjs --task task-001"
+    "eval:task": "node evals/harness.mjs --task task-001",
+    "rsi:suite": "node scripts/rsi/run-rsi-suite.mjs --pattern all",
+    "rsi:perf": "node scripts/rsi/run-rsi-suite.mjs --pattern perf",
+    "rsi:adversarial": "node scripts/rsi/run-rsi-suite.mjs --pattern adversarial",
+    "rsi:drift": "node scripts/rsi/run-rsi-suite.mjs --pattern drift",
+    "rsi:frugal": "node scripts/rsi/run-rsi-suite.mjs --pattern frugal",
+    "rsi:swebench": "node scripts/rsi/run-rsi-suite.mjs --pattern swebench",
+    "rsi:adr": "node scripts/rsi/run-rsi-suite.mjs --pattern adr"
   },
   "license": "MIT",
   "devDependencies": {

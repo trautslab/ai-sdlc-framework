@@ -1,0 +1,19 @@
+{
+  "name": "ai-sdlc-framework",
+  "version": "1.2.0",
+  "description": "AI-SDLC Starter Kit & Agentic-Native Framework with Recursive Self-Improvement (RSI)",
+  "type": "module",
+  "scripts": {
+    "dashboard": "node templates/scripts/serve-dashboard.mjs",
+    "rsi:suite": "node scripts/rsi/run-rsi-suite.mjs --pattern all",
+    "rsi:perf": "node scripts/rsi/run-rsi-suite.mjs --pattern perf",
+    "rsi:adversarial": "node scripts/rsi/run-rsi-suite.mjs --pattern adversarial",
+    "rsi:drift": "node scripts/rsi/run-rsi-suite.mjs --pattern drift",
+    "rsi:frugal": "node scripts/rsi/run-rsi-suite.mjs --pattern frugal",
+    "rsi:swebench": "node scripts/rsi/run-rsi-suite.mjs --pattern swebench",
+    "rsi:adr": "node scripts/rsi/run-rsi-suite.mjs --pattern adr"
+  },
+  "keywords": ["ai-sdlc", "rsi", "agentic-native", "dual-rail", "swe-bench", "metr", "evals"],
+  "author": "TraustLab & Antigravity AI",
+  "license": "MIT"
+}
