@@ -20,6 +20,7 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 ### 🏛️ Arquitectura & Documentación Técnica
 - [`docs/deep-dives/01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md`](docs/deep-dives/01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md) — RNFs, Bulkheading, Rate Limiting y Resiliencia para 100+ Integraciones.
 - [`docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md`](docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md) — Gobernanza Inmune a la Saturación/Compactación de Contexto y Tokenomics.
+- [`docs/research/INDEX.md`](docs/research/INDEX.md) — Investigaciones de Vanguardia (SOTA), RSI (*Recursive Self-Improvement*), Auto-Research y Evaluación METR.
 - [`templates/docs/INDEX.md`](templates/docs/INDEX.md) — Matriz de trazabilidad y navegación documental.
 - [`templates/docs/architecture/c4-model-template.md`](templates/docs/architecture/c4-model-template.md) — Arquitectura C4 (Contexto, Contenedores, Componentes).
 - [`templates/docs/use-cases/UC-001-template.md`](templates/docs/use-cases/UC-001-template.md) — Caso de Uso formal con BDD / Gherkin.
@@ -31,8 +32,9 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 - [`templates/docs/specs/RFC-001-template.md`](templates/docs/specs/RFC-001-template.md) — Especificación técnica RFC.
 
 ### 📦 Gobernanza, Release & Continuidad
+- [`CHANGELOG.md`](CHANGELOG.md) — Registro formal de versiones y cambios del framework (SemVer + Keep a Changelog).
 - [`templates/HANDOFF.md`](templates/HANDOFF.md) — Snapshot vivo de estado y continuidad entre sesiones.
-- [`templates/CHANGELOG.md`](templates/CHANGELOG.md) — Keep a Changelog + SemVer.
+- [`templates/CHANGELOG.md`](templates/CHANGELOG.md) — Plantilla de Changelog para proyectos derivados.
 - [`templates/CONTRIBUTING.md`](templates/CONTRIBUTING.md) — Convenciones Git, Commits y Quality Gates.
 
 ---
