@@ -62,19 +62,61 @@ function runGate(gateNumber, name, fn) {
   }
 }
 
-// 1. Gate: Task IDs Correlative Check
-runGate(1, 'Correlatividad de Tareas (.agents/tasks/)', () => {
+// 1. Gate: Universal Correlative & Invariant ID Check (Anti-Hallucination)
+runGate(1, 'Invariantes de Identificadores Correlativos (Anti-Alucinación)', () => {
+  const categories = [
+    { prefix: 'TASK', dir: '.agents/tasks', name: 'Tareas Agénticas' },
+    { prefix: 'UC', dir: 'docs/use-cases', name: 'Casos de Uso' },
+    { prefix: 'DEP', dir: 'docs/diagrams/deployment', name: 'Diagramas de Despliegue' },
+    { prefix: 'SEC', dir: 'docs/diagrams/network-topology', name: 'Topología de Red & Seguridad' },
+    { prefix: 'CMP', dir: 'docs/diagrams/components', name: 'Diagramas de Componentes' },
+    { prefix: 'ROB', dir: 'docs/diagrams/robustness', name: 'Diagramas de Robustez' },
+    { prefix: 'NET', dir: 'docs/diagrams/use-case-network', name: 'Redes de Trazabilidad' },
+    { prefix: 'ADR', dir: 'docs/adr', name: 'Registros de Decisión (ADRs)' },
+    { prefix: 'ENV', dir: 'docs/environments', name: 'Matrices de Ambiente' },
+    { prefix: 'FIN', dir: 'docs/finops', name: 'Modelos FinOps' }
+  ];
+
+  let totalAudited = 0;
+  const globalIds = new Map();
+
+  function scanDir(dirPath) {
+    if (!existsSync(dirPath)) return;
+    for (const f of readdirSync(dirPath)) {
+      const fullPath = join(dirPath, f);
+      if (statSync(fullPath).isDirectory()) {
+        if (f !== 'node_modules' && f !== '.git' && f !== '.worktrees') scanDir(fullPath);
+      } else if (f.endsWith('.md')) {
+        const idMatch = f.match(/^(TASK|UC|DEP|SEC|CMP|ROB|NET|ADR|ENV|FIN)-(\d{3,4})/);
+        if (idMatch) {
+          const id = idMatch[0];
+          if (globalIds.has(id)) {
+            throw new Error(`ID duplicado detectado: ${id} en ${fullPath} y ${globalIds.get(id)}`);
+          }
+          globalIds.set(id, fullPath);
+          totalAudited++;
+        }
+      }
+    }
+  }
+
+  // Escanear tanto la raíz como templates y demos
+  scanDir(resolve(process.cwd(), 'templates', 'docs'));
+  scanDir(resolve(process.cwd(), 'templates', '.agents'));
+
+  // Validar también el índice de tareas .agents/tasks/INDEX.md si existe
   const tasksIndex = resolve(process.cwd(), '.agents', 'tasks', 'INDEX.md');
   if (existsSync(tasksIndex)) {
     const content = readFileSync(tasksIndex, 'utf-8');
-    const ids = [...content.matchAll(/TASK-(\d{3})/g)].map(m => m[0]);
-    const uniqueIds = new Set(ids);
-    if (ids.length !== uniqueIds.size) {
-      return { success: false, detail: 'IDs de tarea duplicados detectados' };
+    const lines = content.split('\n').filter(l => l.includes('TASK-'));
+    const taskIds = lines.map(l => l.match(/TASK-\d{3,4}/)?.[0]).filter(Boolean);
+    const uniqueTaskIds = new Set(taskIds);
+    if (taskIds.length !== uniqueTaskIds.size) {
+      return { success: false, detail: 'IDs de tarea duplicados en .agents/tasks/INDEX.md' };
     }
-    return { success: true, detail: `${uniqueIds.size} tareas indexadas sin colisiones` };
   }
-  return { success: true, detail: 'Índice de tareas no presente o válido' };
+
+  return { success: true, detail: `${totalAudited} artefactos formales con IDs unívocos validados (0 colisiones)` };
 });
 
 // 2. Gate: Clean Architecture & Drift Check

@@ -18,6 +18,12 @@ Repositorio central con la guía metodológica y las plantillas oficiales del **
 - [`templates/.devcontainer/devcontainer.json`](templates/.devcontainer/devcontainer.json) — Sandbox hermético para ejecución aislada.
 - [`templates/evals/harness.mjs`](templates/evals/harness.mjs) — Script ejecutor del Eval Harness (Self-Healing Loop).
 
+### ☁️ Despliegue, Infraestructura & Gobernanza de Ambientes
+- [`templates/docs/diagrams/deployment/DEP-001-template.md`](templates/docs/diagrams/deployment/DEP-001-template.md) — Diagrama de Despliegue Multi-Cloud Agnóstico (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
+- [`templates/docs/diagrams/network-topology/SEC-NET-001-template.md`](templates/docs/diagrams/network-topology/SEC-NET-001-template.md) — Topología de Red, Subnets DMZ, WAF y Seguridad Zero-Trust.
+- [`templates/docs/environments/ENV-MATRIX-template.md`](templates/docs/environments/ENV-MATRIX-template.md) — Matriz de 4 Ambientes (DEV / QA / UAT / PROD) y Gestión de Secretos en Vaults/KMS.
+- [`templates/docs/finops/FINOPS-001-template.md`](templates/docs/finops/FINOPS-001-template.md) — Modelo FinOps, Bill of Materials (BOM), Presupuesto Cloud y Tokenomics.
+
 ### 🏢 Arquitectura, Negocio & Diagramas (3ra Capa)
 - [`templates/docs/INDEX.md`](templates/docs/INDEX.md) — Matriz de trazabilidad y navegación documental.
 - [`templates/docs/use-cases/UC-001-template.md`](templates/docs/use-cases/UC-001-template.md) — Caso de Uso formal exhaustivo (Happy Path, Alternativos, Edge Cases, Boundary, Negativos, BDD Gherkin).

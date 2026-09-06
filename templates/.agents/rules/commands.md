@@ -17,23 +17,35 @@ Al invocar cualquiera de estos comandos con sus argumentos, la IA ejecuta autom�
 | `/swe-eval` | `[nombre_caso_uso]` | `micro-swebench` | Transpilación BDD Gherkin a arnés determinista y validación Red $\rightarrow$ Green Stage. |
 | `/adr-sync` | `[directorio_adr]` | `living-adr-sync` | Auditoría estática de enlaces a archivos, esquemas y correlatividad de IDs de ADRs. |
 | `/traceability-sync` | *(sin argumentos)* | `traceability-sync` | Sincronización del grafo de red `NET-001` entre Requerimientos, Casos de Uso y Tareas. |
+| `/deploy` | `[ambiente] [--provider aws...]` | `deploy-pipeline` | Orquesta el despliegue multi-cloud en DEV, QA, UAT o PROD con validación de secrets y health checks. |
+| `/finops-estimate` | *(sin argumentos)* | `finops-calculator` | Cálculo de presupuesto mensual, BOM de infraestructura, consumo elástico y tokenomics. |
 | `/precommit-audit` | *(sin argumentos)* | `pre-commit-guard` | Ejecución secuencial de los 7 Quality Gates deterministas antes de hacer commit. |
 
 ---
 
 ## 💡 Ejemplos de Invocación en Chat
 
-### Ejemplo 1: Optimización de Rendimiento
+### Ejemplo 1: Despliegue en Ambiente de Staging (UAT)
+```text
+/deploy uat --provider aws
+```
+
+### Ejemplo 2: Optimización de Rendimiento
 ```text
 /auto-perf CatalogService --threshold 20
 ```
 
-### Ejemplo 2: Auditoría de Seguridad de Endpoint
+### Ejemplo 3: Auditoría de Seguridad de Endpoint
 ```text
 /adversarial POST /api/v1/orders/checkout
 ```
 
-### Ejemplo 3: Verificación Previa a Commit
+### Ejemplo 4: Estimación de Costos FinOps
+```text
+/finops-estimate
+```
+
+### Ejemplo 5: Verificación Previa a Commit
 ```text
 /precommit-audit
 ```

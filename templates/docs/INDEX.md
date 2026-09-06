@@ -14,6 +14,12 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 - [01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md](https://github.com/trautslab/ai-sdlc-framework/blob/main/docs/deep-dives/01-ENTERPRISE-NFRS-AND-ISOLATION-100-TOOLS.md) — Matriz de RNFs, Resiliencia, Bulkheading y Aislamiento para CRM de IA con 100+ Integraciones.
 - [02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md](https://github.com/trautslab/ai-sdlc-framework/blob/main/docs/deep-dives/02-CONTEXT-GOVERNANCE-TOKENOMICS-AND-PLATFORMS.md) — Gobernanza Inmune a la Saturación/Compactación de Contexto, Tokenomics de Alta Escala y Garantías en Antigravity / Claude Code / Codex / Cursor.
 
+## ☁️ 1.2. Despliegue, Infraestructura & Gobernanza de Ambientes
+- [`DEP-001` (Diagrama de Despliegue Multi-Cloud Agnóstico)](diagrams/deployment/DEP-001-template.md) — Topología C4/UML: Edge, Ingress, Cómputo, Datos y SaaS (AWS, GCP, Azure, OCI, Cloudflare, Supabase, Vercel).
+- [`SEC-NET-001` (Topología de Red & Seguridad Zero-Trust)](diagrams/network-topology/SEC-NET-001-template.md) — Segmentación en Subnets (DMZ, App, Data), WAF, NAT, Security Groups y Políticas IAM.
+- [`ENV-MATRIX` (Matriz de 4 Ambientes DEV / QA / UAT / PROD)](environments/ENV-MATRIX-template.md) — Gobernanza de etapas, gestión de secretos en Vaults/KMS y Quality Gates de promoción.
+- [`FINOPS-001` (Modelo FinOps & Presupuesto Cloud)](finops/FINOPS-001-template.md) — Bill of Materials (BOM), costos fijos/variables, tokenomics de IA y comisiones de pasarela.
+
 ---
 
 ## 🎯 2. Matriz de Trazabilidad: Casos de Uso vs Artefactos de Arquitectura
@@ -25,6 +31,12 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 ---
 
 ## 📊 3. Catálogo de Diagramas por Tipo
+
+### ☁️ Diagramas de Despliegue Multi-Cloud (`docs/diagrams/deployment/`)
+- [`DEP-001`](diagrams/deployment/DEP-001-template.md) — Topología física/lógica de contenedores, balanceadores y almacenes gestionados.
+
+### 🛡️ Topología de Red y Seguridad (`docs/diagrams/network-topology/`)
+- [`SEC-NET-001`](diagrams/network-topology/SEC-NET-001-template.md) — Arquitectura de red DMZ, subredes privadas aisladas y reglas de firewall.
 
 ### 🕸️ Red de Trazabilidad de Casos de Uso (`docs/diagrams/use-case-network/`)
 - [`NET-001`](diagrams/use-case-network/NET-001-template.md) — Grafo de dependencia: Requerimiento $\rightarrow$ Caso de Uso $\rightarrow$ Tarea Agente $\rightarrow$ Worktree $\rightarrow$ Commit.
@@ -51,4 +63,5 @@ Este índice actúa como la **matriz de navegación** para todo el catálogo de 
 
 ## 📝 4. Especificaciones Técnicas (RFCs)
 - [`RFC-001`](specs/RFC-001-template.md) — Especificación técnica y requerimientos funcionales.
+
 

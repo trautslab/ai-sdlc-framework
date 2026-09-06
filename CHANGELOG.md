@@ -10,6 +10,24 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.4.0] - 2026-09-05
+
+### ☁️ Added (Topología de Despliegue Multi-Cloud & Gobernanza de Ambientes)
+- **Diagrama de Despliegue Multi-Cloud Agnóstico (`DEP-001`):** [`templates/docs/diagrams/deployment/DEP-001-template.md`](templates/docs/diagrams/deployment/DEP-001-template.md) con modelado C4/UML y tabla de equivalencias técnicas para **AWS, GCP, Azure, Oracle OCI, Cloudflare, Supabase y Vercel**.
+- **Topología de Red & Seguridad Zero-Trust (`SEC-NET-001`):** [`templates/docs/diagrams/network-topology/SEC-NET-001-template.md`](templates/docs/diagrams/network-topology/SEC-NET-001-template.md) con segmentación en Subnets (DMZ Pública, App Privada, Datos Aislados), WAF, NAT Gateways, Security Groups y Políticas IAM de Mínimo Privilegio.
+- **Matriz de Gobernanza de 4 Ambientes (`ENV-MATRIX`):** [`templates/docs/environments/ENV-MATRIX-template.md`](templates/docs/environments/ENV-MATRIX-template.md) formalizando el ciclo `DEV` $\rightarrow$ `QA` $\rightarrow$ `UAT` $\rightarrow$ `PROD`, gestión de secretos en Vaults/KMS y Quality Gates deterministas de promoción.
+- **Modelo FinOps & Presupuesto Cloud (`FINOPS-001`):** [`templates/docs/finops/FINOPS-001-template.md`](templates/docs/finops/FINOPS-001-template.md) con Bill of Materials (BOM), costos fijos mensuales por ambiente, consumo elástico variable, tokenomics agénticos de IA y comisiones de pasarela Stripe.
+
+### 🛡️ Added (Invariante Universal Anti-Alucinación de Identificadores)
+- **Regla Inviolable en `invariants.md` (Sección 5):** Prefijos formales obligatorios (`DEP-XXXX`, `SEC-XXXX`, `ENV-XXXX`, `FIN-XXXX`, `UC-XXXX`, `TASK-XXXX`, `ADR-XXXX`), prohibición de duplicación y reciclaje de IDs entre archivos.
+- **Validación Multi-Categoría en Pre-Commit:** Escaneo estático en `pre-commit-guard.mjs` que aborta commits si detecta colisiones de identificadores en todo el árbol de documentación.
+
+### 🚀 Added (Habilidad de Despliegue Agéntico & Comandos)
+- **Deployer Skill (`.agents/skills/deploy-pipeline/SKILL.md`):** Protocolo para que los agentes orquesten despliegues automáticos consultando secretos de Vaults/MCPs y verificando health checks post-despliegue.
+- **Slash Commands (`commands.md`):** Inclusión de `/deploy [ambiente]` y `/finops-estimate`.
+
+---
+
 ## [1.3.0] - 2026-09-05
 
 ### 🏢 Added (3ra Capa: Negocio, Product Owners & Funcionales)

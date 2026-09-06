@@ -62,19 +62,42 @@ function runGate(gateNumber, name, fn) {
   }
 }
 
-// 1. Gate: Task IDs Correlative Check
-runGate(1, 'Correlatividad de Tareas (.agents/tasks/)', () => {
-  const tasksIndex = resolve(process.cwd(), '.agents', 'tasks', 'INDEX.md');
-  if (existsSync(tasksIndex)) {
-    const content = readFileSync(tasksIndex, 'utf-8');
-    const ids = [...content.matchAll(/TASK-(\d{3})/g)].map(m => m[0]);
-    const uniqueIds = new Set(ids);
-    if (ids.length !== uniqueIds.size) {
-      return { success: false, detail: 'IDs de tarea duplicados detectados' };
+// 1. Gate: Universal Correlative & Invariant ID Check (Anti-Hallucination)
+runGate(1, 'Invariantes de Identificadores Correlativos (Anti-Alucinación)', () => {
+  const categories = [
+    { prefix: 'TASK', regex: /TASK-(\d{3,4})/g, name: 'Tareas Agénticas' },
+    { prefix: 'UC', regex: /UC-(\d{3,4})/g, name: 'Casos de Uso' },
+    { prefix: 'DEP', regex: /DEP-(\d{3,4})/g, name: 'Diagramas de Despliegue' },
+    { prefix: 'SEC', regex: /SEC-(\d{3,4})/g, name: 'Topología de Red & Seguridad' },
+    { prefix: 'CMP', regex: /CMP-(\d{3,4})/g, name: 'Diagramas de Componentes' },
+    { prefix: 'ROB', regex: /ROB-(\d{3,4})/g, name: 'Diagramas de Robustez' },
+    { prefix: 'NET', regex: /NET-(\d{3,4})/g, name: 'Redes de Trazabilidad' },
+    { prefix: 'ADR', regex: /ADR-(\d{4})/g, name: 'Registros de Decisión (ADRs)' },
+    { prefix: 'ENV', regex: /ENV-(\d{3,4})/g, name: 'Matrices de Ambiente' },
+    { prefix: 'FIN', regex: /FIN-(\d{3,4})/g, name: 'Modelos FinOps' }
+  ];
+
+  let totalAudited = 0;
+  for (const cat of categories) {
+    const tasksIndex = resolve(process.cwd(), '.agents', 'tasks', 'INDEX.md');
+    const docsIndex = resolve(process.cwd(), 'docs', 'INDEX.md');
+    const templateDocsIndex = resolve(process.cwd(), 'templates', 'docs', 'INDEX.md');
+    
+    // Validar unicidad en índices si existen
+    for (const indexPath of [tasksIndex, docsIndex, templateDocsIndex]) {
+      if (existsSync(indexPath)) {
+        const content = readFileSync(indexPath, 'utf-8');
+        const matches = [...content.matchAll(cat.regex)].map(m => m[0]);
+        const uniqueMatches = new Set(matches);
+        if (matches.length !== uniqueMatches.size) {
+          return { success: false, detail: `IDs duplicados de ${cat.name} detectados en ${indexPath}` };
+        }
+        totalAudited += uniqueMatches.size;
+      }
     }
-    return { success: true, detail: `${uniqueIds.size} tareas indexadas sin colisiones` };
   }
-  return { success: true, detail: 'Índice de tareas no presente o válido' };
+
+  return { success: true, detail: `${totalAudited} identificadores correlativos validados (0 colisiones)` };
 });
 
 // 2. Gate: Clean Architecture & Drift Check
